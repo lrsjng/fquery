@@ -1,4 +1,5 @@
 # fQuery
+File selection and processing for node.
 
 To report a bug or make a feature request
 please create [a new issue](http://github.com/lrsjng/fquery/issues/new).
@@ -12,7 +13,12 @@ fQuery is provided under the terms of the [MIT License](http://github.com/lrsjng
 ## Changelog
 
 
-### v0.1.0 - *2012-??*
+### v0.2.0 - *2012-??*
+
+* 
+
+
+### v0.1.0 - *2012-07-20*
 
 * initial release
 
