@@ -5,13 +5,13 @@ var _ = require('underscore'),
 	includify = require('./includify');
 
 
-module.exports = function (fQuery) {
+module.exports = {
 
-	fQuery.fn.includify = function (options) {
+	includify: function (options) {
 
 		return this.edit(function () {
 
 			this.content = includify({ file: this.path, content: this.content });
 		});
-	};
+	}
 };

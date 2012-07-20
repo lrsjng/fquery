@@ -4,9 +4,9 @@ var _ = require('underscore'),
 	cssmin = require('./cssmin');
 
 
-module.exports = function (fQuery) {
+module.exports = {
 
-	fQuery.fn.cssmin = function (options) {
+	cssmin: function (options) {
 
 		var linebreak = -1;
 
@@ -14,5 +14,5 @@ module.exports = function (fQuery) {
 
 			this.content = cssmin(this.content, linebreak);
 		});
-	};
+	}
 };

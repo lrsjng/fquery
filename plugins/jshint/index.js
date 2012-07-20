@@ -4,9 +4,9 @@ var _ = require('underscore'),
 	jshint = require('jshint').JSHINT;
 
 
-module.exports = function (fQuery) {
+module.exports = {
 
-	fQuery.fn.jshint = function (options) {
+	jshint: function (options) {
 
 		return this.each(function () {
 
@@ -23,5 +23,5 @@ module.exports = function (fQuery) {
 				});
 			}
 		});
-	};
+	}
 };

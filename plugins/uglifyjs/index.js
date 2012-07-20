@@ -5,9 +5,9 @@ var _ = require('underscore'),
 	pro = require("uglify-js").uglify;
 
 
-module.exports = function (fQuery) {
+module.exports = {
 
-	fQuery.fn.uglifyjs = function (options) {
+	uglifyjs: function (options) {
 
 		return this.edit(function () {
 
@@ -25,5 +25,5 @@ module.exports = function (fQuery) {
 
 			this.content = final_code;
 		});
-	};
+	}
 };
