@@ -10,7 +10,7 @@ module.exports = {
 
 		return this.each(function () {
 
-			console.log('JsHint', this.path);
+			console.log('JsHint', this.source);
 
 			var passed = jshint(this.content, options);
 

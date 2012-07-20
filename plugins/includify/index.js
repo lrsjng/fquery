@@ -11,7 +11,7 @@ module.exports = {
 
 		return this.edit(function () {
 
-			this.content = includify({ file: this.path, content: this.content });
+			this.content = includify({ file: this.source, content: this.content });
 		});
 	}
 };

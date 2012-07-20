@@ -11,7 +11,7 @@ module.exports = {
 
 		return this.edit(function () {
 
-			this.content = less(this.path, this.content, false);
+			this.content = less(this.source, this.content, false);
 		});
 	}
 };
