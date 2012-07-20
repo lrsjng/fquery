@@ -1,0 +1,18 @@
+# fQuery
+
+To report a bug or make a feature request
+please create [a new issue](http://github.com/lrsjng/fquery/issues/new).
+
+* Website: <http://larsjung.de/fquery>
+* Sources: <http://github.com/lrsjng/fquery>
+
+fquery is provided under the terms of the [MIT License](http://github.com/lrsjng/fquery/blob/master/LICENSE.txt).
+
+
+## Changelog
+
+
+### v0.1.0 - *2012-??*
+
+* initial release
+
