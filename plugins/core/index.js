@@ -1,9 +1,6 @@
 /*jshint node: true, strict: false */
 
-var _ = require('underscore'),
-
-	Blob = require('../../lib/Blob'),
-	findPaths = require('../../lib/Selector');
+var _ = require('underscore');
 
 
 module.exports = function (fQuery) {
@@ -62,10 +59,10 @@ module.exports = function (fQuery) {
 				paths[blob.path] = true;
 			});
 
-			_.each(findPaths(arg), function (filepath) {
+			_.each(fQuery(arg), function (blob) {
 
-				if (!paths[filepath]) {
-					list.push(Blob.select(filepath));
+				if (!paths[blob.path]) {
+					list.push(blob);
 				}
 			});
 
@@ -77,9 +74,9 @@ module.exports = function (fQuery) {
 			var list = [],
 				paths = {};
 
-			_.each(findPaths(arg), function (filepath) {
+			_.each(fQuery(arg), function (blob) {
 
-				paths[filepath] = true;
+				paths[blob.path] = true;
 			});
 
 			_.each(this, function (blob) {
@@ -102,14 +99,15 @@ module.exports = function (fQuery) {
 			return this;
 		},
 
-		editContent: function (fn) {
+		edit: function (fn) {
 
 			var list = [];
 
 			_.each(this, function (blob) {
 
-				var newContent = fn.call(blob, blob);
-				list.push(Blob.create(blob.path, newContent));
+				var clone = blob.clone();
+				fn.call(clone, clone);
+				list.push(clone);
 			});
 
 			this.push(list);

@@ -9,7 +9,7 @@ module.exports = function (fQuery) {
 
 	fQuery.fn.uglifyjs = function (options) {
 
-		return this.editContent(function () {
+		return this.edit(function () {
 
 			// parse code and get the initial AST
 			var ast = jsp.parse(this.content);
@@ -23,7 +23,7 @@ module.exports = function (fQuery) {
 			// compressed code here
 			var final_code = pro.gen_code(ast);
 
-			return final_code;
+			this.content = final_code;
 		});
 	};
 };

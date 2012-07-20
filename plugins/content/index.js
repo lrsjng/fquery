@@ -40,15 +40,15 @@ module.exports = function (fQuery) {
 			prepend = prepend || '';
 			append = append || '';
 
-			return this.editContent(function () {
+			return this.edit(function () {
 
-				return prepend + this.content + append;
+				this.content = prepend + this.content + append;
 			});
 		},
 
 		replace: function (rules) {
 
-			return this.editContent(function () {
+			return this.edit(function () {
 
 				var content = this.content;
 
@@ -64,7 +64,7 @@ module.exports = function (fQuery) {
 					content = content.replace(sel, repl);
 				});
 
-				return content;
+				this.content = content;
 			});
 		}
 	});

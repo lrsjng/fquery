@@ -10,9 +10,9 @@ module.exports = function (fQuery) {
 
 		var linebreak = -1;
 
-		return this.editContent(function () {
+		return this.edit(function () {
 
-			return cssmin(this.content, linebreak);
+			this.content = cssmin(this.content, linebreak);
 		});
 	};
 };

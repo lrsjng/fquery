@@ -9,9 +9,9 @@ module.exports = function (fQuery) {
 
 	fQuery.fn.less = function (options) {
 
-		return this.editContent(function () {
+		return this.edit(function () {
 
-			return less(this.path, this.content, false);
+			this.content = less(this.path, this.content, false);
 		});
 	};
 };

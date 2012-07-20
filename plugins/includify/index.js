@@ -9,12 +9,9 @@ module.exports = function (fQuery) {
 
 	fQuery.fn.includify = function (options) {
 
-		return this.editContent(function () {
+		return this.edit(function () {
 
-			return includify({
-				file: this.path,
-				content: this.content
-			});
+			this.content = includify({ file: this.path, content: this.content });
 		});
 	};
 };

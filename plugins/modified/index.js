@@ -1,7 +1,6 @@
 /*jshint node: true, strict: false */
 
-var _ = require('underscore'),
-	Blob = require('../../lib/Blob');
+var _ = require('underscore');
 
 
 module.exports = function (fQuery) {
@@ -13,7 +12,7 @@ module.exports = function (fQuery) {
 
 		if (_.isString(arg)) {
 
-			var blob = Blob.select(arg);
+			var blob = fQuery(arg).get(0);
 
 			if (!blob) {
 				modified = Array.prototype.slice.call(this);
@@ -42,7 +41,7 @@ module.exports = function (fQuery) {
 			this.each(function () {
 
 				var blob = this,
-					targetBlob = Blob.select(arg.call(this));
+					targetBlob = fQuery(arg.call(this)).get(0);
 
 				if (!targetBlob || blob.timestamp.valueOf() >= targetBlob.timestamp.valueOf()) {
 					modified.push(blob);
