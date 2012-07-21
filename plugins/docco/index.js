@@ -1,17 +1,24 @@
 /*jshint node: true, strict: false */
 
-var _ = require('underscore');
+var path = require('path'),
+	_ = require('underscore'),
+	docco = require('./docco');
 
 
 module.exports = {
 
-	docco: function (options) {
+	docco: function (dest, callback) {
 
-		this.each(function () {
+		docco({
+			dest: dest,
+			files: _.pluck(this, 'source'),
+			callback: function () {
 
-
+				if (_.isFunction(callback)) {
+					callback();
+				}
+			}
 		});
-		// require('docco');
 
 		return this;
 	}
