@@ -14,6 +14,11 @@
     "javascript"
   ],
   "author": "Lars Jung <lrsjng@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lrsjng/fQuery.git"
+  },
   "main": "./lib/fQuery",
   "dependencies": {
     "glob": "~3.0.1",
