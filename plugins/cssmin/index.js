@@ -1,18 +1,36 @@
 /*jshint node: true, strict: false */
 
-var _ = require('underscore'),
-	cssmin = require('./cssmin');
+var fs = require('fs'),
+	vm = require('vm'),
+	_ = require('underscore'),
+
+	cssmin_content = fs.readFileSync(__dirname + '/cssmin.js', 'utf-8'),
+	sandbox = {},
+	YAHOO;
 
 
-module.exports = {
 
-	cssmin: function (options) {
+vm.runInNewContext(cssmin_content, sandbox, 'cssmin.js');
+YAHOO = sandbox.YAHOO;
 
-		var linebreak = -1;
 
-		return this.edit(function () {
 
-			this.content = cssmin(this.content, linebreak);
-		});
-	}
+module.exports = function (fQuery) {
+
+	return  {
+
+		cssmin: function (options) {
+
+			var linebreak = -1;
+
+			return this.edit(function () {
+
+				try {
+					this.content = YAHOO.compressor.cssmin(this.content, linebreak);
+				} catch (err) {
+					fQuery.error('cssmin', err, this);
+				}
+			});
+		}
+	};
 };

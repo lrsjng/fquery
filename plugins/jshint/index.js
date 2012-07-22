@@ -4,24 +4,18 @@ var _ = require('underscore'),
 	jshint = require('jshint').JSHINT;
 
 
-module.exports = {
+module.exports = function (fQuery) {
 
-	jshint: function (options) {
+	return {
 
-		return this.each(function () {
+		jshint: function (options) {
 
-			console.log('JsHint', this.source);
+			return this.each(function () {
 
-			var passed = jshint(this.content, options);
-
-			if (!passed) {
-				_.each(jshint.errors, function (err) {
-
-					if (err) {
-						console.log('  ' + err.line + ':' + err.character + '   ' + err.reason);
-					}
-				});
-			}
-		});
-	}
+				if (!jshint(this.content, options)) {
+					fQuery.error('jshint', jshint.errors, this);
+				}
+			});
+		}
+	};
 };

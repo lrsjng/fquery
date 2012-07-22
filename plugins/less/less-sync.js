@@ -18,6 +18,9 @@ module.exports = function (filepath, content, compress) {
 	// `parser.parse` is sync if `Parser.importer` is sync
 	parser.parse(content, function (e, tree) {
 
+		if (e) {
+			throw e;
+		}
 		result = tree.toCSS({ compress: !!compress });
 	});
 
@@ -68,12 +71,14 @@ less.Parser.importer = function (file, paths, callback) {
 				callback(root);
 			});
 		} catch (e) {
-			util.error(e);
+			throw {msg: "file '" + file + "' wasn't found.\n", file: file};
+			// util.error(e);
 		}
 		// ENDS HERE
 
 	} else {
-		util.error("file '" + file + "' wasn't found.\n");
-		process.exit(1);
+		throw {msg: "file '" + file + "' wasn't found.\n", file: file};
+		// util.error("file '" + file + "' wasn't found.\n");
+		// process.exit(1);
 	}
 };

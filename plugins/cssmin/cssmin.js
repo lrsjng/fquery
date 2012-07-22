@@ -344,11 +344,3 @@ YAHOO.compressor.cssmin = function (css, linebreakpos) {
     return css;
 
 };
-
-// customized to make it a node module
-if (module) {
-    module.exports = function (css, linebreak) {
-
-        return YAHOO.compressor.cssmin(css, linebreak);
-    };
-}

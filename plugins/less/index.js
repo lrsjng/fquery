@@ -5,13 +5,20 @@ var _ = require('underscore'),
 	less = require('./less-sync');
 
 
-module.exports = {
+module.exports = function (fQuery) {
 
-	less: function (options) {
+	return {
 
-		return this.edit(function () {
+		less: function (options) {
 
-			this.content = less(this.source, this.content, false);
-		});
-	}
+			return this.edit(function () {
+
+				try {
+					this.content = less(this.source, this.content, false);
+				} catch (err) {
+					fQuery.error('less', err, this);
+				}
+			});
+		}
+	};
 };
