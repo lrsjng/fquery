@@ -10,10 +10,12 @@ module.exports = function (fQuery) {
 
 		jshint: function (options) {
 
+			var self = this;
+
 			return this.each(function () {
 
 				if (!jshint(this.content, options)) {
-					fQuery.error('jshint', jshint.errors, this);
+					self.error('jshint', jshint.errors[0].reason, this, jshint.errors);
 				}
 			});
 		}

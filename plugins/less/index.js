@@ -1,7 +1,6 @@
 /*jshint node: true, strict: false */
 
 var _ = require('underscore'),
-
 	less = require('./less-sync');
 
 
@@ -11,12 +10,14 @@ module.exports = function (fQuery) {
 
 		less: function (options) {
 
+			var self = this;
+
 			return this.edit(function () {
 
 				try {
 					this.content = less(this.source, this.content, false);
 				} catch (err) {
-					fQuery.error('less', err, this);
+					self.error('less', err.message, this, err);
 				}
 			});
 		}

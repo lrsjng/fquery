@@ -9,21 +9,29 @@ module.exports = {
 
 	uglifyjs: function (options) {
 
+		var self = this;
+
 		return this.edit(function () {
 
-			// parse code and get the initial AST
-			var ast = jsp.parse(this.content);
+			try {
 
-			// get a new AST with mangled names
-			ast = pro.ast_mangle(ast);
+				// parse code and get the initial AST
+				var ast = jsp.parse(this.content);
 
-			// get an AST with compression optimizations
-			ast = pro.ast_squeeze(ast);
+				// get a new AST with mangled names
+				ast = pro.ast_mangle(ast);
 
-			// compressed code here
-			var final_code = pro.gen_code(ast);
+				// get an AST with compression optimizations
+				ast = pro.ast_squeeze(ast);
 
-			this.content = final_code;
+				// compressed code here
+				var final_code = pro.gen_code(ast);
+
+				this.content = final_code;
+
+			} catch (err) {
+				self.error('uglifyjs', err.message, this, err);
+			}
 		});
 	}
 };

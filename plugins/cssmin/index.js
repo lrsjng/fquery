@@ -21,14 +21,15 @@ module.exports = function (fQuery) {
 
 		cssmin: function (options) {
 
-			var linebreak = -1;
+			var self = this,
+				linebreak = -1;
 
 			return this.edit(function () {
 
 				try {
 					this.content = YAHOO.compressor.cssmin(this.content, linebreak);
 				} catch (err) {
-					fQuery.error('cssmin', err, this);
+					self.error('cssmin', 'failed', this, err);
 				}
 			});
 		}
