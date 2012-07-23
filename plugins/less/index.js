@@ -17,7 +17,7 @@ module.exports = function (fQuery) {
 				try {
 					this.content = less(this.source, this.content, false);
 				} catch (err) {
-					self.error('less', err.message, this, err);
+					self.error('less', err.name + ', ' + err.message, this, err, err.line, err.column + 1);
 				}
 			});
 		}

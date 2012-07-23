@@ -30,7 +30,7 @@ module.exports = {
 				this.content = final_code;
 
 			} catch (err) {
-				self.error('uglifyjs', err.message, this, err);
+				self.error('uglifyjs', err.message, this, err, err.line + 1, err.col + 1);
 			}
 		});
 	}
