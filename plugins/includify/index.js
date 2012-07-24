@@ -1,17 +1,35 @@
-/*jshint node: true, strict: false */
+/*jshint node: true */
+'use strict';
 
 var _ = require('underscore'),
 
 	includify = require('./includify');
 
 
-module.exports = {
+module.exports = function (fQuery) {
 
-	includify: function (options) {
+	return {
 
-		return this.edit(function (blob) {
+		includify: function (options) {
 
-			blob.content = includify({ file: blob.source, content: blob.content });
-		});
-	}
+			var fquery = this;
+
+			return this.edit(function (blob) {
+
+				try {
+					blob.content = includify({ file: blob.source, content: blob.content });
+				} catch (err) {
+					fQuery.error({
+						method: 'includify',
+						message: err.message,
+						fquery: fquery,
+						blob: blob,
+						line: err.line,
+						column: err.column,
+						data: err
+					});
+				}
+			});
+		}
+	};
 };

@@ -1,25 +1,35 @@
-/*jshint node: true, strict: false */
+/*jshint node: true */
+'use strict';
 
 var path = require('path'),
 	_ = require('underscore'),
 	docco = require('./docco');
 
 
-module.exports = {
+module.exports = function (fQuery) {
 
-	docco: function (dest, callback) {
+	return {
 
-		docco({
-			dest: dest,
-			files: _.pluck(this, 'source'),
-			callback: function () {
+		docco: function (dest, callback) {
 
-				if (_.isFunction(callback)) {
-					callback();
-				}
-			}
-		});
+			// docco({
+			// 	dest: dest,
+			// 	files: _.pluck(this, 'source'),
+			// 	callback: function () {
 
-		return this;
-	}
+			// 		if (_.isFunction(callback)) {
+			// 			callback();
+			// 		}
+			// 	}
+			// });
+
+			fQuery.info({
+				method: 'docco',
+				message: 'not available yet',
+				fquery: this
+			});
+
+			return this;
+		}
+	};
 };
