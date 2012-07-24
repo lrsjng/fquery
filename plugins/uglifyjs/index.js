@@ -5,33 +5,44 @@ var _ = require('underscore'),
 	pro = require("uglify-js").uglify;
 
 
-module.exports = {
+module.exports = function (fQuery) {
 
-	uglifyjs: function (options) {
+	return {
 
-		var self = this;
+		uglifyjs: function (options) {
 
-		return this.edit(function () {
+			var fquery = this;
 
-			try {
+			return this.edit(function (blob) {
 
-				// parse code and get the initial AST
-				var ast = jsp.parse(this.content);
+				try {
 
-				// get a new AST with mangled names
-				ast = pro.ast_mangle(ast);
+					// parse code and get the initial AST
+					var ast = jsp.parse(blob.content);
 
-				// get an AST with compression optimizations
-				ast = pro.ast_squeeze(ast);
+					// get a new AST with mangled names
+					ast = pro.ast_mangle(ast);
 
-				// compressed code here
-				var final_code = pro.gen_code(ast);
+					// get an AST with compression optimizations
+					ast = pro.ast_squeeze(ast);
 
-				this.content = final_code;
+					// compressed code here
+					var final_code = pro.gen_code(ast);
 
-			} catch (err) {
-				self.error('uglifyjs', err.message, this, err, err.line + 1, err.col + 1);
-			}
-		});
-	}
+					blob.content = final_code;
+
+				} catch (err) {
+					fQuery.error({
+						method: 'uglifyjs',
+						message: err.message,
+						fquery: fquery,
+						blob: blob,
+						line: err.line + 1,
+						column: err.col + 1,
+						data: err
+					});
+				}
+			});
+		}
+	};
 };

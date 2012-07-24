@@ -10,14 +10,22 @@ module.exports = function (fQuery) {
 
 		less: function (options) {
 
-			var self = this;
+			var fquery = this;
 
-			return this.edit(function () {
+			return this.edit(function (blob) {
 
 				try {
-					this.content = less(this.source, this.content, false);
+					blob.content = less(blob.source, blob.content, false);
 				} catch (err) {
-					self.error('less', err.name + ', ' + err.message, this, err, err.line, err.column + 1);
+					fQuery.error({
+						method: 'less',
+						message: err.name + ', ' + err.message,
+						fquery: fquery,
+						blob: blob,
+						line: err.line,
+						column: err.column + 1,
+						data: err
+					});
 				}
 			});
 		}

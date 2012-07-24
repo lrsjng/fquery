@@ -9,9 +9,9 @@ module.exports = {
 
 	includify: function (options) {
 
-		return this.edit(function () {
+		return this.edit(function (blob) {
 
-			this.content = includify({ file: this.source, content: this.content });
+			blob.content = includify({ file: blob.source, content: blob.content });
 		});
 	}
 };
