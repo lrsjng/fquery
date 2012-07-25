@@ -23,6 +23,7 @@ module.exports = function (fQuery) {
 						message: err.name + ', ' + err.message,
 						fquery: fquery,
 						blob: blob,
+						file: err.filename,
 						line: err.line,
 						column: err.column + 1,
 						data: err

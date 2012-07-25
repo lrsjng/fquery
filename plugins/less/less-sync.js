@@ -45,41 +45,25 @@ less.Parser.importer = function (file, paths, callback) {
 	}
 
 	if (pathname) {
+		var data;
 
-		// ORIGINAL ASYNC CODE
-		// fs.readFile(pathname, 'utf-8', function(e, data) {
-		//   if (e) sys.error(e);
-		//   new(less.Parser)({
-		//       paths: [path.dirname(pathname)].concat(paths),
-		//       filename: pathname
-		//   }).parse(data, function (e, root) {
-		//       if (e) less.writeError(e);
-		//       callback(root);
-		//   });
-		// });
-
-		// SYNC REPLACEMENT
 		try {
-			var data = fs.readFileSync(pathname, 'utf-8');
-
-			new(less.Parser)({
-				paths: [path.dirname(pathname)].concat(paths),
-				filename: pathname
-			}).parse(data, function (e, root) {
-				if (e) {
-					less.writeError(e);
-				}
-				callback(root);
-			});
+			data = fs.readFileSync(pathname, 'utf-8');
 		} catch (e) {
 			throw {msg: "file '" + file + "' wasn't found.\n", file: file};
-			// util.error(e);
 		}
-		// ENDS HERE
+
+		new (less.Parser)({
+			paths: [path.dirname(pathname)].concat(paths),
+			filename: pathname
+		}).parse(data, function (e, root) {
+			if (e) {
+				throw e;
+			}
+			callback(root);
+		});
 
 	} else {
 		throw {msg: "file '" + file + "' wasn't found.\n", file: file};
-		// util.error("file '" + file + "' wasn't found.\n");
-		// process.exit(1);
 	}
 };
