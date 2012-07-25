@@ -10,10 +10,11 @@ var path = require('path'),
 	reEmptyLine = /^\s+$/gm,
 	reEndsFailSafe = /;?(\s*)$/,
 
-	Err = function (message, stack, line, column) {
+	Err = function (message, stack, file, line, column) {
 
 		this.message = message;
 		this.stack = stack;
+		this.file = file;
 		this.line = line;
 		this.column = column;
 	},
@@ -57,7 +58,7 @@ var path = require('path'),
 				}
 
 				var pos = findPos(content, match);
-				throw new Err('not found in ' + file + '[' + pos.line + ':' + pos.column + ']: "' + reference + '" -> "' + refFile + '"', stack, pos.line, pos.column);
+				throw new Err('not found in ' + file + '[' + pos.line + ':' + pos.column + ']: "' + reference + '" -> "' + refFile + '"', stack, file, pos.line, pos.column);
 			}
 
 			return refContent;
@@ -77,8 +78,8 @@ var path = require('path'),
 
 		var settings = _.extend({}, defaults, options);
 
-		if (!settings.file && !settings.content) {
-			throw new Err('neither file nor content specified');
+		if (!settings.file || !settings.content) {
+			throw new Err('file and/or content undefined');
 		}
 
 		return recursion(settings, [], settings.file, settings.content);
