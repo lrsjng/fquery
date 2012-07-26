@@ -1,7 +1,7 @@
 {
   "name": "fquery",
   "displayName": "fQuery",
-  "version": "0.2.0-dev",
+  "version": "0.2.0",
   "description": "file selection and processing for node",
   "url": "http://larsjung.de/fquery",
   "keywords": [
