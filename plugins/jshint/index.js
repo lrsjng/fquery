@@ -1,4 +1,5 @@
-/*jshint node: true, strict: false */
+/*jshint node: true */
+'use strict';
 
 var _ = require('underscore'),
 	jshint = require('jshint').JSHINT;
@@ -6,22 +7,29 @@ var _ = require('underscore'),
 
 module.exports = function (fQuery) {
 
-	fQuery.fn.jshint = function (options) {
+	return {
 
-		return this.each(function () {
+		jshint: function (options) {
 
-			console.log('JsHint', this.path);
+			var fquery = this;
 
-			var passed = jshint(this.content, options);
+			return this.each(function (blob) {
 
-			if (!passed) {
-				_.each(jshint.errors, function (err) {
+				if (!jshint(blob.content, options)) {
+					fQuery.error(_.map(_.compact(jshint.errors), function (err) {
 
-					if (err) {
-						console.log('  ' + err.line + ':' + err.character + '   ' + err.reason);
-					}
-				});
-			}
-		});
+						return {
+							method: 'jshint',
+							message: (err.id ? err.id + ' ' : '') + err.reason,
+							fquery: fquery,
+							blob: blob,
+							line: err.line,
+							column: err.character,
+							data: err
+						};
+					}));
+				}
+			});
+		}
 	};
 };

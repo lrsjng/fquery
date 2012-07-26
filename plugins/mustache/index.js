@@ -2,30 +2,28 @@
 'use strict';
 
 var _ = require('underscore'),
-	less = require('./less-sync');
+	mustache = require('mustache');
 
 
 module.exports = function (fQuery) {
 
 	return {
 
-		less: function (options) {
+		mustache: function (view) {
 
 			var fquery = this;
 
 			return this.edit(function (blob) {
 
 				try {
-					blob.content = less(blob.source, blob.content, false);
+					blob.content = mustache.to_html(blob.content, view); // still on version 0.4.0 at npm
+					// blob.content = mustache.render(blob.content, view); // version 0.5.x
 				} catch (err) {
 					fQuery.error({
-						method: 'less',
-						message: err.name + ', ' + err.message,
+						method: 'mustache',
+						message: err.toString(),
 						fquery: fquery,
 						blob: blob,
-						file: err.filename,
-						line: err.line,
-						column: err.column + 1,
 						data: err
 					});
 				}

@@ -1,7 +1,8 @@
 {
   "name": "fquery",
-  "version": "0.1.0",
-  "description": "file selection and processing",
+  "displayName": "fQuery",
+  "version": "0.2.0-dev",
+  "description": "file selection and processing for node",
   "url": "http://larsjung.de/fquery",
   "keywords": [
     "file",
@@ -14,6 +15,11 @@
     "javascript"
   ],
   "author": "Lars Jung <lrsjng@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lrsjng/fQuery.git"
+  },
   "main": "./lib/fQuery",
   "dependencies": {
     "glob": "~3.0.1",
@@ -21,7 +27,9 @@
     "underscore": "~1.1.7",
     "less": "~1.1.6",
     "uglify-js": "~1.0.7",
-    "jshint": "~0.7.1"
+    "jshint": "~0.7.1",
+    "docco": "~0.3.0",
+    "mustache": "~0.4.0"
   },
   "engines": {
     "node": ">=0.6"

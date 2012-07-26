@@ -1,77 +1,86 @@
-(function (global) {
-	'use strict';
-	/*global module, process, require, console */
+/*jshint node: true */
+'use strict';
 
-	var path = require('path'),
-		fs = require('fs'),
-		_ = require('underscore'),
+var path = require('path'),
+	fs = require('fs'),
+	_ = require('underscore'),
 
 
-		defaults = {
-			file: undefined,
-			content: undefined,
-			charset: 'utf-8'
-		},
-		reInclude = /^([ \t]*)\/\/[ \t]*@include[ \t]+(|base:)(["'])(.+)\3[; \t]*$/gm,
-		reEmptyLine = /^\s+$/gm,
-		reEndsFailSafe = /;?(\s*)$/,
-		message = function (type, message, stack) {
-			/*global console */
+	reInclude = /^([ \t]*)\/\/[ \t]*@include[ \t]+(|base:)(["'])(.+)\3[; \t]*$/gm,
+	reEmptyLine = /^\s+$/gm,
+	reEndsFailSafe = /;?(\s*)$/,
 
-			if (console) {
-				console.log('[includify:' + type + '] ' + message);
-				if (stack) {
-					console.log('stack', stack);
-				}
-			}
-		},
-		recursion = function (settings, stack, file, content) {
+	Err = function (message, stack, file, line, column) {
 
-			if (_.indexOf(stack, file) >= 0) {
-				message('err', 'circular reference: "' + file + '"', stack);
-				return content;
-			}
-			stack.push(file);
+		this.message = message;
+		this.stack = stack;
+		this.file = file;
+		this.line = line;
+		this.column = column;
+	},
 
-			content = content.replace(reInclude, function (match, indent, mode, quote, reference) {
+	findPos = function (content, match) {
 
-				var refFile = path.normalize(path.join(path.dirname(file), reference)),
-					refContent;
+		var character = content.indexOf(match);
 
-				try {
-					refContent = fs.readFileSync(refFile, settings.charset);
-					refContent = refContent.replace(reEndsFailSafe, function (match, whiteEnd) {
-						return ';' + whiteEnd;
-					});
-					refContent = recursion(settings, stack, refFile, refContent);
-					refContent = indent + refContent.replace(/\n/g, '\n' + indent);
-					refContent = refContent.replace(reEmptyLine, '');
-				} catch (err) {
-					refContent = match;
-					message('err', 'not found: "' + reference + '" -> "' + refFile + '"', stack);
-				}
+		content = content.slice(0, character);
+		content = content.split('\n');
 
-				return refContent;
-			});
-
-			stack.pop();
-			return content;
-		},
-		includify = function (options) {
-
-			var file, content,
-				settings = _.extend({}, defaults, options);
-
-			if (!settings.file && !settings.content) {
-				message('err', 'neither file nor content specified');
-				return;
-			}
-
-			file = settings.file || path.join(process.cwd(), 'INPUT');
-			content = settings.content || ''; // || fs.readFileSync(file, settings.charset);
-			return recursion(settings, [], file, content);
+		return {
+			line: content.length,
+			column: content[content.length - 1].length + match.indexOf('@include') + 1
 		};
+	},
 
-	module.exports = includify;
+	recursion = function (settings, stack, file, content) {
 
-}(this));
+		if (_.indexOf(stack, file) >= 0) {
+			throw new Err('circular reference: "' + file + '"', stack);
+		}
+		stack.push(file);
+
+		content = content.replace(reInclude, function (match, indent, mode, quote, reference) {
+
+			var refFile = path.normalize(path.join(path.dirname(file), reference)),
+				refContent;
+
+			try {
+				refContent = fs.readFileSync(refFile, settings.charset);
+				refContent = refContent.replace(reEndsFailSafe, function (match, whiteEnd) {
+					return ';' + whiteEnd;
+				});
+				refContent = recursion(settings, stack, refFile, refContent);
+				refContent = indent + refContent.replace(/\n/g, '\n' + indent);
+				refContent = refContent.replace(reEmptyLine, '');
+			} catch (err) {
+				if (err instanceof Err) {
+					throw err;
+				}
+
+				var pos = findPos(content, match);
+				throw new Err('not found: "' + reference + '"', stack, file, pos.line, pos.column);
+			}
+
+			return refContent;
+		});
+
+		stack.pop();
+		return content;
+	},
+
+	defaults = {
+		file: undefined,
+		content: undefined,
+		charset: 'utf-8'
+	},
+
+	includify = module.exports = function (options) {
+
+		var settings = _.extend({}, defaults, options);
+
+		if (!settings.file || !settings.content) {
+			throw new Err('file and/or content undefined');
+		}
+
+		return recursion(settings, [], settings.file, settings.content);
+	};

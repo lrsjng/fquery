@@ -1,4 +1,5 @@
-/*jshint node: true, strict: false */
+/*jshint node: true */
+'use strict';
 
 var _ = require('underscore'),
 	jsp = require("uglify-js").parser,
@@ -7,23 +8,42 @@ var _ = require('underscore'),
 
 module.exports = function (fQuery) {
 
-	fQuery.fn.uglifyjs = function (options) {
+	return {
 
-		return this.editContent(function () {
+		uglifyjs: function (options) {
 
-			// parse code and get the initial AST
-			var ast = jsp.parse(this.content);
+			var fquery = this;
 
-			// get a new AST with mangled names
-			ast = pro.ast_mangle(ast);
+			return this.edit(function (blob) {
 
-			// get an AST with compression optimizations
-			ast = pro.ast_squeeze(ast);
+				try {
 
-			// compressed code here
-			var final_code = pro.gen_code(ast);
+					// parse code and get the initial AST
+					var ast = jsp.parse(blob.content);
 
-			return final_code;
-		});
+					// get a new AST with mangled names
+					ast = pro.ast_mangle(ast);
+
+					// get an AST with compression optimizations
+					ast = pro.ast_squeeze(ast);
+
+					// compressed code here
+					var final_code = pro.gen_code(ast);
+
+					blob.content = final_code;
+
+				} catch (err) {
+					fQuery.error({
+						method: 'uglifyjs',
+						message: err.message,
+						fquery: fquery,
+						blob: blob,
+						line: err.line + 1,
+						column: err.col + 1,
+						data: err
+					});
+				}
+			});
+		}
 	};
 };
