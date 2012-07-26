@@ -58,7 +58,7 @@ var path = require('path'),
 				}
 
 				var pos = findPos(content, match);
-				throw new Err('not found in ' + file + '[' + pos.line + ':' + pos.column + ']: "' + reference + '" -> "' + refFile + '"', stack, file, pos.line, pos.column);
+				throw new Err('not found: "' + reference + '"', stack, file, pos.line, pos.column);
 			}
 
 			return refContent;
