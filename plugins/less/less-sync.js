@@ -50,7 +50,7 @@ less.Parser.importer = function (file, paths, callback) {
 		try {
 			data = fs.readFileSync(pathname, 'utf-8');
 		} catch (e) {
-			throw {msg: "file '" + file + "' wasn't found.\n", file: file};
+			throw {message: "file '" + file + "' not found."};
 		}
 
 		new (less.Parser)({
@@ -64,6 +64,6 @@ less.Parser.importer = function (file, paths, callback) {
 		});
 
 	} else {
-		throw {msg: "file '" + file + "' wasn't found.\n", file: file};
+		throw {message: "file '" + file + "' not found."};
 	}
 };
