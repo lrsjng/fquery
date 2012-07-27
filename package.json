@@ -29,7 +29,8 @@
     "uglify-js": "~1.0.7",
     "jshint": "~0.7.1",
     "docco": "~0.3.0",
-    "mustache": "~0.4.0"
+    "mustache": "~0.4.0",
+    "jade": "~0.27.0"
   },
   "engines": {
     "node": ">=0.6"
