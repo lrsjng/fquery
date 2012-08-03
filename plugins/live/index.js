@@ -15,26 +15,34 @@ module.exports = function (fQuery) {
 
 		live: function (view) {
 
-			var fquery = this;
-
-			return this.edit(function (blob) {
-
-				try {
-					var content = blob.content;
-
-					content = content.replace('</head>', template.replace('LIVE_HINT', '"countUp"') + '</head>');
-
-					blob.content = content;
-				} catch (err) {
-					fQuery.error({
-						method: 'live',
-						message: err.toString(),
-						fquery: fquery,
-						blob: blob,
-						data: err
-					});
-				}
+			fQuery.info({
+				method: 'live',
+				message: 'not available yet',
+				fquery: this
 			});
+
+			return this;
+
+			// var fquery = this;
+
+			// return this.edit(function (blob) {
+
+			// 	try {
+			// 		var content = blob.content;
+
+			// 		content = content.replace('</head>', template.replace('LIVE_HINT', '"countUp"') + '</head>');
+
+			// 		blob.content = content;
+			// 	} catch (err) {
+			// 		fQuery.error({
+			// 			method: 'live',
+			// 			message: err.toString(),
+			// 			fquery: fquery,
+			// 			blob: blob,
+			// 			data: err
+			// 		});
+			// 	}
+			// });
 		}
 	};
 };
