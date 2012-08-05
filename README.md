@@ -1,11 +1,9 @@
 # fQuery
-File selection and processing for node.
+File selection and processing for Node.js.
 
-To report a bug or make a feature request
-please create [a new issue](http://github.com/lrsjng/fquery/issues/new).
-
-* Website: <http://larsjung.de/fquery>
-* Sources: <http://github.com/lrsjng/fquery>
+* to report a bug or make a feature request please create [a new issue](http://github.com/lrsjng/fquery/issues/new).
+* website and docs: <http://larsjung.de/fquery>
+* sources: <http://github.com/lrsjng/fquery>
 
 fQuery is provided under the terms of the [MIT License](http://github.com/lrsjng/fquery/blob/develop/LICENSE.txt).
 
