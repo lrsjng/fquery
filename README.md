@@ -13,6 +13,11 @@ fQuery is provided under the terms of the [MIT License](http://github.com/lrsjng
 ## Changelog
 
 
+### v0.3.0 - *2012-08-05*
+
+* interface nearly done
+
+
 ### v0.2.0 - *2012-07-26*
 
 * still initial changes
