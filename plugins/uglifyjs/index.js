@@ -2,8 +2,8 @@
 'use strict';
 
 var _ = require('underscore'),
-	jsp = require("uglify-js").parser,
-	pro = require("uglify-js").uglify;
+	jsp = require('uglify-js').parser,
+	pro = require('uglify-js').uglify;
 
 
 module.exports = function (fQuery) {

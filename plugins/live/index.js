@@ -6,43 +6,51 @@ var fs = require('fs'),
 
 	live_content = fs.readFileSync(__dirname + '/live-fquery.js', 'utf-8'),
 
-	template = '<script>' + live_content + '</script>';
+	live_compressed = (function () {
+
+		var jsp = require('uglify-js').parser,
+			pro = require('uglify-js').uglify,
+			ast = jsp.parse(live_content); // parse code and get the initial AST
+
+		ast = pro.ast_mangle(ast); // get a new AST with mangled names
+		ast = pro.ast_squeeze(ast); // get an AST with compression optimizations
+		return pro.gen_code(ast); // compressed code here
+	}()),
+
+	template = '<script>' + live_compressed + '</script>',
+
+	defaults = {
+		// 'countUp' or 'updated' or null
+		hint: 'countUp'
+	};
 
 
 module.exports = function (fQuery) {
 
 	return {
 
-		live: function (view) {
+		live: function (options) {
 
-			fQuery.info({
-				method: 'live',
-				message: 'not available yet',
-				fquery: this
+			var fquery = this,
+				settings = _.extend({}, defaults, options),
+				script = template.replace('LIVE_HINT', '"' + settings.hint + '"');
+
+			return this.edit(function (blob) {
+
+				try {
+
+					blob.content = blob.content.replace('</head>', script + '</head>');
+
+				} catch (err) {
+					fQuery.error({
+						method: 'live',
+						message: err.toString(),
+						fquery: fquery,
+						blob: blob,
+						data: err
+					});
+				}
 			});
-
-			return this;
-
-			// var fquery = this;
-
-			// return this.edit(function (blob) {
-
-			// 	try {
-			// 		var content = blob.content;
-
-			// 		content = content.replace('</head>', template.replace('LIVE_HINT', '"countUp"') + '</head>');
-
-			// 		blob.content = content;
-			// 	} catch (err) {
-			// 		fQuery.error({
-			// 			method: 'live',
-			// 			message: err.toString(),
-			// 			fquery: fquery,
-			// 			blob: blob,
-			// 			data: err
-			// 		});
-			// 	}
-			// });
 		}
 	};
 };
