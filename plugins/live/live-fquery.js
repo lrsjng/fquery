@@ -174,7 +174,7 @@
             for (i = 0; i < scripts.length; i += 1) {
                 script = scripts[i];
                 src = script.getAttribute("src");
-                if (src && isLocal(src)) {
+                if (src && isLocal(src) && !src.match(/^data:/)) {
                     uris.push(src);
                 }
             }
@@ -185,7 +185,7 @@
                 link = links[i];
                 rel = link.getAttribute("rel");
                 href = link.getAttribute("href", 2);
-                if (href && rel && rel.match(/stylesheet/i) && isLocal(href)) {
+                if (href && rel && rel.match(/stylesheet/i) && isLocal(href) && !href.match(/^data:/)) {
                     uris.push(href);
                     currentLinkElements[href] = link;
                 }
