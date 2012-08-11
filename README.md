@@ -11,6 +11,11 @@ fQuery is provided under the terms of the [MIT License](http://github.com/lrsjng
 ## Changelog
 
 
+### v0.4.0 - *2012-08-11*
+
+* add plugin handlebars
+
+
 ### v0.3.0 - *2012-08-05*
 
 * interface nearly done
