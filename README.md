@@ -11,6 +11,11 @@ fQuery is provided under the terms of the [MIT License](http://github.com/lrsjng
 ## Changelog
 
 
+### v0.5.0 - *2012-08-12*
+
+* adds globs in `includify`
+
+
 ### v0.4.0 - *2012-08-11*
 
 * add plugin handlebars
