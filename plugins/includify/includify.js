@@ -4,6 +4,7 @@
 var path = require('path'),
 	fs = require('fs'),
 	_ = require('underscore'),
+	glob = require('glob'),
 
 
 	reInclude = /^([ \t]*)\/\/[ \t]*@include[ \t]+(|base:)(["'])(.+)\3[; \t]*$/gm,
@@ -32,6 +33,19 @@ var path = require('path'),
 		};
 	},
 
+	globOptions = {
+		dot: true,
+		silent: false,
+		sync: true
+	},
+	pathsForGlob = function (pattern) {
+
+		return _.map(glob(pattern, globOptions), function (filepath) {
+
+			return path.resolve(filepath);
+		});
+	},
+
 	recursion = function (settings, stack, file, content) {
 
 		if (_.indexOf(stack, file) >= 0) {
@@ -41,27 +55,30 @@ var path = require('path'),
 
 		content = content.replace(reInclude, function (match, indent, mode, quote, reference) {
 
-			var refFile = path.normalize(path.join(path.dirname(file), reference)),
-				refContent;
+			var refPattern = path.normalize(path.join(path.dirname(file), reference)),
+				refPaths = pathsForGlob(refPattern);
 
-			try {
-				refContent = fs.readFileSync(refFile, settings.charset);
-				refContent = refContent.replace(reEndsFailSafe, function (match, whiteEnd) {
-					return ';' + whiteEnd;
-				});
-				refContent = recursion(settings, stack, refFile, refContent);
-				refContent = indent + refContent.replace(/\n/g, '\n' + indent);
-				refContent = refContent.replace(reEmptyLine, '');
-			} catch (err) {
-				if (err instanceof Err) {
-					throw err;
+			return _.map(refPaths, function (refPath) {
+
+				try {
+					var refContent = fs.readFileSync(refPath, settings.charset);
+					refContent = refContent.replace(reEndsFailSafe, function (match, whiteEnd) {
+						return ';' + whiteEnd;
+					});
+					refContent = recursion(settings, stack, refPath, refContent);
+					refContent = indent + refContent.replace(/\n/g, '\n' + indent);
+					refContent = refContent.replace(reEmptyLine, '');
+
+					return refContent;
+				} catch (err) {
+					if (err instanceof Err) {
+						throw err;
+					}
+
+					var pos = findPos(content, match);
+					throw new Err('not found: "' + reference + '"', stack, file, pos.line, pos.column);
 				}
-
-				var pos = findPos(content, match);
-				throw new Err('not found: "' + reference + '"', stack, file, pos.line, pos.column);
-			}
-
-			return refContent;
+			}).join('\n\n');
 		});
 
 		stack.pop();
