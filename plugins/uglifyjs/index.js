@@ -3,7 +3,11 @@
 
 var _ = require('underscore'),
 	jsp = require('uglify-js').parser,
-	pro = require('uglify-js').uglify;
+	pro = require('uglify-js').uglify,
+
+	defaults = {
+		linebreak: 32 * 1024
+	};
 
 
 module.exports = function (fQuery) {
@@ -12,7 +16,8 @@ module.exports = function (fQuery) {
 
 		uglifyjs: function (options) {
 
-			var fquery = this;
+			var fquery = this,
+				settings = _.extend({}, defaults, options);
 
 			return this.edit(function (blob) {
 
@@ -29,6 +34,10 @@ module.exports = function (fQuery) {
 
 					// compressed code here
 					var final_code = pro.gen_code(ast);
+
+					if (settings.linebreak > 0) {
+						final_code = pro.split_lines(final_code, settings.linebreak);
+					}
 
 					blob.content = final_code;
 

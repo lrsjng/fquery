@@ -7,7 +7,11 @@ var fs = require('fs'),
 
 	cssmin_content = fs.readFileSync(__dirname + '/cssmin.js', 'utf-8'),
 	sandbox = {},
-	YAHOO;
+	YAHOO,
+
+	defaults = {
+		linebreak: -1
+	};
 
 
 
@@ -23,12 +27,12 @@ module.exports = function (fQuery) {
 		cssmin: function (options) {
 
 			var fquery = this,
-				linebreak = -1;
+				settings = _.extend({}, defaults, options);
 
 			return this.edit(function (blob) {
 
 				try {
-					blob.content = YAHOO.compressor.cssmin(blob.content, linebreak);
+					blob.content = YAHOO.compressor.cssmin(blob.content, settings.linebreak);
 				} catch (err) {
 					fQuery.error({
 						method: 'cssmin',
