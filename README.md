@@ -11,9 +11,9 @@ fQuery is provided under the terms of the [MIT License](http://github.com/lrsjng
 ## Changelog
 
 
-### v0.6.0 - *2012-??-??*
+### v0.6.0 - *2012-08-14*
 
-* 
+* adds linebreak option to uglifyjs and cssmin plugin
 
 
 ### v0.5.0 - *2012-08-12*
