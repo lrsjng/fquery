@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/lrsjng/fQuery.png)](http://travis-ci.org/lrsjng/fQuery)
 # fQuery
 File selection and processing for Node.js.
 
