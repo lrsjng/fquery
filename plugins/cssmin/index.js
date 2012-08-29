@@ -2,10 +2,11 @@
 'use strict';
 
 var fs = require('fs'),
+	path = require('path'),
 	vm = require('vm'),
 	_ = require('underscore'),
 
-	cssmin_content = fs.readFileSync(__dirname + '/cssmin.js', 'utf-8'),
+	cssmin_content = fs.readFileSync(path.resolve(__dirname, 'cssmin.js'), 'utf-8'),
 	sandbox = {},
 	YAHOO,
 
