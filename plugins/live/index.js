@@ -31,26 +31,34 @@ module.exports = function (fQuery) {
 
 		live: function (options) {
 
-			var fquery = this,
-				settings = _.extend({}, defaults, options),
-				script = template.replace('LIVE_HINT', '"' + settings.hint + '"');
-
-			return this.edit(function (blob) {
-
-				try {
-
-					blob.content = blob.content.replace('</head>', script + '</head>');
-
-				} catch (err) {
-					fQuery.error({
-						method: 'live',
-						message: err.toString(),
-						fquery: fquery,
-						blob: blob,
-						data: err
-					});
-				}
+			fQuery.info({
+				method: 'live',
+				message: 'not available yet',
+				fquery: this
 			});
+
+			return this;
+
+			// var fquery = this,
+			// 	settings = _.extend({}, defaults, options),
+			// 	script = template.replace('LIVE_HINT', '"' + settings.hint + '"');
+
+			// return this.edit(function (blob) {
+
+			// 	try {
+
+			// 		blob.content = blob.content.replace('</head>', script + '</head>');
+
+			// 	} catch (err) {
+			// 		fQuery.error({
+			// 			method: 'live',
+			// 			message: err.toString(),
+			// 			fquery: fquery,
+			// 			blob: blob,
+			// 			data: err
+			// 		});
+			// 	}
+			// });
 		}
 	};
 };

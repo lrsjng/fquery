@@ -28,7 +28,6 @@ module.exports = function (fQuery) {
 
 		zip: function (mapper) {
 
-
 			fQuery.info({
 				method: 'zip',
 				message: 'not available yet',
@@ -36,8 +35,6 @@ module.exports = function (fQuery) {
 			});
 
 			return this;
-
-
 
 			// var fquery = this,
 			// 	zip = new JSZip();
