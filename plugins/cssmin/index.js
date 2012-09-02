@@ -35,7 +35,7 @@ var fs = require('fs'),
 	YAHOO,
 
 	defaults = {
-		header: true,
+		header: '!',
 		linebreak: -1
 	};
 

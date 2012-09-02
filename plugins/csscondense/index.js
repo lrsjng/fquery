@@ -2,7 +2,7 @@
 'use strict';
 
 var _ = require('underscore'),
-	cleancss = require('clean-css'),
+	csscondense = require('css-condense'),
 
 	reHeaderComment = /^\s*(\/\*((.|\n|\r)*?)\*\/)/,
 	getHeaderComment = function (arg, content) {
@@ -17,7 +17,7 @@ var _ = require('underscore'),
 		var match = content.match(reHeaderComment);
 		var header = match ? match[1] + '\n' : '';
 
-		// cleancss keeps them anyway
+		// csscondense keeps them anyway
 		if (match && match[2].match(/^!/)) {
 			header = '';
 		}
@@ -38,7 +38,7 @@ module.exports = function (fQuery) {
 
 	return  {
 
-		cleancss: function (options) {
+		csscondense: function (options) {
 
 			var fquery = this,
 				settings = _.extend({}, defaults, options);
@@ -49,11 +49,11 @@ module.exports = function (fQuery) {
 
 					var header = getHeaderComment(settings.header, blob.content);
 
-					blob.content = header + cleancss.process(blob.content);
+					blob.content = header + csscondense.compress(blob.content, settings);
 
 				} catch (err) {
 					fQuery.error({
-						method: 'cleancss',
+						method: 'csscondense',
 						message: 'failed',
 						fquery: fquery,
 						blob: blob,

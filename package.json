@@ -38,7 +38,8 @@
     "rimraf": "~2.0.2",
     "commander": "~1.0.0",
     "handlebars": "~1.0.6-2",
-    "clean-css": "~0.6.0"
+    "clean-css": "~0.6.0",
+    "css-condense": "0.0.3"
   },
   "engines": {
     "node": ">=0.6"
