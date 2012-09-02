@@ -5,14 +5,15 @@ File selection and processing for Node.js.
 * website and docs: <http://larsjung.de/fquery>
 * sources: <http://github.com/lrsjng/fquery>
 
-fQuery is provided under the terms of the [MIT License](http://github.com/lrsjng/fquery/blob/develop/LICENSE.txt).
+fQuery is provided under the terms of the [MIT License](http://github.com/lrsjng/fquery/blob/develop/LICENSE.md).
 
 
 ## Changelog
 
 ### v0.7.0 - *2012-??-??*
 
-* 
+* adds cleancss plugin
+* adds header option to uglifyjs and cssmin plugin
 
 
 ### v0.6.0 - *2012-08-14*
