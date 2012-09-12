@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-// -*- js -*-
-
 /*jshint node: true */
 'use strict';
 
@@ -22,11 +20,19 @@ var path = require('path'),
 
 	file = path.resolve(cli.file),
 
-	makejs = new MakeJs(file);
+	makejs;
 
 
 if (!cli.color) {
 	color.useColors = false;
+}
+
+
+try {
+	makejs = new MakeJs(file);
+} catch (err) {
+	process.stdout.write(err.toString());
+	process.exit(1);
 }
 
 
@@ -69,4 +75,5 @@ try {
 	makejs.process(cli.args);
 } catch (err) {
 	process.stdout.write(err.toString());
+	process.exit(2);
 }

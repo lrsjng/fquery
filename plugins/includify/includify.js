@@ -55,7 +55,7 @@ var path = require('path'),
 
 		content = content.replace(reInclude, function (match, indent, mode, quote, reference) {
 
-			var refPattern = path.normalize(path.join(path.dirname(file), reference)),
+			var refPattern = path.normalize(path.resolve(path.dirname(file), reference)),
 				refPaths = pathsForGlob(refPattern);
 
 			return _.map(refPaths, function (refPath) {

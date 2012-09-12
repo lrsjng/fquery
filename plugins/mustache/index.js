@@ -16,8 +16,7 @@ module.exports = function (fQuery) {
 			return this.edit(function (blob) {
 
 				try {
-					blob.content = mustache.to_html(blob.content, view); // still on version 0.4.0 at npm
-					// blob.content = mustache.render(blob.content, view); // version 0.5.x
+					blob.content = mustache.render(blob.content, view);
 				} catch (err) {
 					fQuery.error({
 						method: 'mustache',

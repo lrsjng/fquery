@@ -2,14 +2,40 @@
 'use strict';
 
 var fs = require('fs'),
+	path = require('path'),
 	vm = require('vm'),
 	_ = require('underscore'),
 
-	cssmin_content = fs.readFileSync(__dirname + '/cssmin.js', 'utf-8'),
+	reHeaderComment = /^\s*(\/\*((.|\n|\r)*?)\*\/)/,
+	getHeaderComment = function (arg, content) {
+
+		if (arg === '!') {
+			arg = /^!/;
+		}
+		if (arg !== true && !_.isRegExp(arg)) {
+			return '';
+		}
+
+		var match = content.match(reHeaderComment);
+		var header = match ? match[1] + '\n' : '';
+
+		// cssmin keeps them anyway
+		if (match && match[2].match(/^!/)) {
+			header = '';
+		}
+
+		if (match && _.isRegExp(arg) && !match[2].match(arg)) {
+			header = '';
+		}
+		return header;
+	},
+
+	cssmin_content = fs.readFileSync(path.resolve(__dirname, 'cssmin.js'), 'utf-8'),
 	sandbox = {},
 	YAHOO,
 
 	defaults = {
+		header: '!',
 		linebreak: -1
 	};
 
@@ -32,7 +58,11 @@ module.exports = function (fQuery) {
 			return this.edit(function (blob) {
 
 				try {
-					blob.content = YAHOO.compressor.cssmin(blob.content, settings.linebreak);
+
+					var header = getHeaderComment(settings.header, blob.content);
+
+					blob.content = header + YAHOO.compressor.cssmin(blob.content, settings.linebreak);
+
 				} catch (err) {
 					fQuery.error({
 						method: 'cssmin',

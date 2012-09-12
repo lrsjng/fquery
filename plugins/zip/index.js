@@ -14,7 +14,7 @@ var fs = require('fs'),
 
 _.each(files, function (file) {
 
-	vm.runInNewContext(fs.readFileSync(__dirname + '/' + file, 'utf-8'), sandbox, file);
+	vm.runInNewContext(fs.readFileSync(path.resolve(__dirname, file), 'utf-8'), sandbox, file);
 });
 
 
@@ -28,7 +28,6 @@ module.exports = function (fQuery) {
 
 		zip: function (mapper) {
 
-
 			fQuery.info({
 				method: 'zip',
 				message: 'not available yet',
@@ -36,8 +35,6 @@ module.exports = function (fQuery) {
 			});
 
 			return this;
-
-
 
 			// var fquery = this,
 			// 	zip = new JSZip();
