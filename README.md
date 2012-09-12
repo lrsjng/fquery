@@ -10,6 +10,11 @@ fQuery is provided under the terms of the [MIT License](http://github.com/lrsjng
 
 ## Changelog
 
+### v0.8.0 - *2012-??-??*
+
+* 
+
+
 ### v0.7.0 - *2012-09-12*
 
 * adds header option to uglifyjs and cssmin plugin
