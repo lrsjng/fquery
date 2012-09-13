@@ -1,7 +1,7 @@
 {
   "name": "fquery",
   "displayName": "fQuery",
-  "version": "0.7.0",
+  "version": "0.8.0-dev",
   "description": "file selection and processing for node",
   "url": "http://larsjung.de/fquery/",
   "keywords": [
@@ -39,7 +39,9 @@
     "commander": "~1.0.0",
     "handlebars": "~1.0.6-2",
     "clean-css": "~0.6.0",
-    "css-condense": "0.0.3"
+    "css-condense": "0.0.3",
+    "semver": "~1.0.14",
+    "async": "~0.1.22"
   },
   "engines": {
     "node": ">=0.6"

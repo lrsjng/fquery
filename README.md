@@ -3,12 +3,18 @@ File selection and processing for Node.js.
 
 * to report a bug or make a feature request please create [a new issue](http://github.com/lrsjng/fquery/issues/new).
 * website: <http://larsjung.de/fquery/>
-* github: <http://github.com/lrsjng/fquery>
+* sources: <http://github.com/lrsjng/fquery>
 
 fQuery is provided under the terms of the [MIT License](http://github.com/lrsjng/fquery/blob/develop/LICENSE.md).
 
 
 ## Changelog
+
+### v0.8.0 - *2012-09-13*
+
+* updates version method
+* updates git plugin
+
 
 ### v0.7.0 - *2012-09-12*
 
