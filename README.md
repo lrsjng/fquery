@@ -10,9 +10,9 @@ fQuery is provided under the terms of the [MIT License](http://github.com/lrsjng
 
 ## Changelog
 
-### v0.9.0 - *2012-??-??*
+### v0.8.1 - *2012-09-15*
 
-* 
+* improves git plugin
 
 
 ### v0.8.0 - *2012-09-13*
