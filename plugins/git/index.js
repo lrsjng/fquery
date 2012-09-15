@@ -38,13 +38,13 @@ module.exports = function (fQuery) {
 
 		fns(dir, options, function (err, result) {
 
-			if (err) {
-				fQuery.error({
-					method: 'git',
-					message: err,
-					data: err
-				});
-			}
+			// if (err) {
+			// 	fQuery.error({
+			// 		method: 'git',
+			// 		message: err,
+			// 		data: err
+			// 	});
+			// }
 
 			fQuery.ok({
 				method: 'git',
