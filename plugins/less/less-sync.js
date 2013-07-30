@@ -10,9 +10,10 @@ var path = require('path'),
 module.exports = function (filepath, content, compress) {
 
 	var parser = new(less.Parser)({
-		paths: [path.dirname(filepath)], // Specify search paths for @import directives
-		filename: filepath // Specify a filename, for better error messages
-	});
+			paths: [path.dirname(filepath)], // Specify search paths for @import directives
+			filename: filepath, // Specify a filename, for better error messages
+			syncImport: true // now supports sync import itself
+		});
 
 	var result;
 
@@ -26,44 +27,4 @@ module.exports = function (filepath, content, compress) {
 	});
 
 	return result;
-};
-
-
-less.Parser.importer = function (file, paths, callback) {
-	var pathname;
-
-	paths.unshift('.');
-
-	for (var i = 0; i < paths.length; i += 1) {
-		try {
-			pathname = path.join(paths[i], file);
-			fs.statSync(pathname);
-			break;
-		} catch (e) {
-			pathname = null;
-		}
-	}
-
-	if (pathname) {
-		var data;
-
-		try {
-			data = fs.readFileSync(pathname, 'utf-8');
-		} catch (e) {
-			throw {message: "file '" + file + "' not found."};
-		}
-
-		new (less.Parser)({
-			paths: [path.dirname(pathname)].concat(paths),
-			filename: pathname
-		}).parse(data, function (e, root) {
-			if (e) {
-				throw e;
-			}
-			callback(root);
-		});
-
-	} else {
-		throw {message: "file '" + file + "' not found."};
-	}
 };
