@@ -9,8 +9,11 @@ var fs = require('fs'),
 	live_compressed = (function () {
 
 		var UglifyJS = require('uglify-js'),
-			compressor = UglifyJS.Compressor(),
-			ast = UglifyJS.parse(live_content);
+			compressor = UglifyJS.Compressor({
+				unused: false,
+				side_effects: false
+			}),
+			ast = UglifyJS.parse(live_content, {filename: __dirname + '/live-fquery.js'});
 
 		ast.figure_out_scope();
 		ast = ast.transform(compressor);

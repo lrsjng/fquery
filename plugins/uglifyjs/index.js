@@ -3,7 +3,11 @@
 
 var _ = require('underscore'),
 	UglifyJS = require('uglify-js'),
-	compressor = UglifyJS.Compressor(),
+	compressor = UglifyJS.Compressor({
+		unused: false,
+		side_effects: false
+		// warnings: false
+	}),
 
 	reHeaderComment = /^\s*(\/\*((.|\n|\r)*?)\*\/)/,
 	getHeaderComment = function (arg, content) {
@@ -45,7 +49,7 @@ module.exports = function (fQuery) {
 				try {
 
 					var header = getHeaderComment(settings.header, blob.content),
-						ast = UglifyJS.parse(blob.content);
+						ast = UglifyJS.parse(blob.content, {filename: blob.source});
 
 					ast.figure_out_scope();
 					ast = ast.transform(compressor);
