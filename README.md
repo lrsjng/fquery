@@ -10,8 +10,9 @@ fQuery is provided under the terms of the [MIT License](http://github.com/lrsjng
 
 ## Changelog
 
-### v0.9.0 - *2013-??-??*
+### v0.9.0 - *2013-07-31*
 
+* fixes
 * updates `async` to `0.2.9`
 * updates `clean-css` to `1.0.12`
 * updates `commander` to `2.0.0`
