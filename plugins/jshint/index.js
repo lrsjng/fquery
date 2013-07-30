@@ -11,11 +11,12 @@ module.exports = function (fQuery) {
 
 		jshint: function (options) {
 
-			var fquery = this;
+			var fquery = this,
+				globals = options.predef;
 
 			return this.each(function (blob) {
 
-				if (!jshint(blob.content, options)) {
+				if (!jshint(blob.content, options, globals)) {
 					fQuery.error(_.map(_.compact(jshint.errors), function (err) {
 
 						return {
