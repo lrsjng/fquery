@@ -2,8 +2,8 @@
 'use strict';
 
 var _ = require('underscore'),
-	jsp = require('uglify-js').parser,
-	pro = require('uglify-js').uglify,
+	UglifyJS = require('uglify-js'),
+	compressor = UglifyJS.Compressor(),
 
 	reHeaderComment = /^\s*(\/\*((.|\n|\r)*?)\*\/)/,
 	getHeaderComment = function (arg, content) {
@@ -44,25 +44,34 @@ module.exports = function (fQuery) {
 
 				try {
 
-					var header = getHeaderComment(settings.header, blob.content);
+					var header = getHeaderComment(settings.header, blob.content),
+						ast = UglifyJS.parse(blob.content);
 
-					// parse code and get the initial AST
-					var ast = jsp.parse(blob.content);
+					ast.figure_out_scope();
+					ast = ast.transform(compressor);
+					ast.figure_out_scope();
+					ast.compute_char_frequency();
+					ast.mangle_names();
 
-					// get a new AST with mangled names
-					ast = pro.ast_mangle(ast);
+					blob.content = header + ast.print_to_string();
 
-					// get an AST with compression optimizations
-					ast = pro.ast_squeeze(ast);
+					// // parse code and get the initial AST
+					// var ast = jsp.parse(blob.content);
 
-					// compressed code here
-					var final_code = pro.gen_code(ast);
+					// // get a new AST with mangled names
+					// ast = pro.ast_mangle(ast);
 
-					if (settings.linebreak > 0) {
-						final_code = pro.split_lines(final_code, settings.linebreak);
-					}
+					// // get an AST with compression optimizations
+					// ast = pro.ast_squeeze(ast);
 
-					blob.content = header + final_code;
+					// // compressed code here
+					// var final_code = pro.gen_code(ast);
+
+					// if (settings.linebreak > 0) {
+					// 	final_code = pro.split_lines(final_code, settings.linebreak);
+					// }
+
+					// blob.content = header + final_code;
 
 				} catch (err) {
 					fQuery.error({

@@ -8,16 +8,21 @@ var fs = require('fs'),
 
 	live_compressed = (function () {
 
-		var jsp = require('uglify-js').parser,
-			pro = require('uglify-js').uglify,
-			ast = jsp.parse(live_content); // parse code and get the initial AST
+		var UglifyJS = require('uglify-js'),
+			compressor = UglifyJS.Compressor(),
+			ast = UglifyJS.parse(live_content);
 
-		ast = pro.ast_mangle(ast); // get a new AST with mangled names
-		ast = pro.ast_squeeze(ast); // get an AST with compression optimizations
-		return pro.gen_code(ast); // compressed code here
+		ast.figure_out_scope();
+		ast = ast.transform(compressor);
+		ast.figure_out_scope();
+		ast.compute_char_frequency();
+		ast.mangle_names();
+
+		return ast.print_to_string();
 	}()),
 
 	template = '<script>' + live_compressed + '</script>',
+	// template = '<script>' + live_content + '</script>',
 
 	defaults = {
 		// 'countUp' or 'updated' or null
