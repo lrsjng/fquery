@@ -2,8 +2,12 @@
 'use strict';
 
 var _ = require('underscore'),
-	jsp = require('uglify-js').parser,
-	pro = require('uglify-js').uglify,
+	UglifyJS = require('uglify-js'),
+	compressor = UglifyJS.Compressor({
+		unused: false,
+		side_effects: false
+		// warnings: false
+	}),
 
 	reHeaderComment = /^\s*(\/\*((.|\n|\r)*?)\*\/)/,
 	getHeaderComment = function (arg, content) {
@@ -41,28 +45,18 @@ module.exports = function (fQuery) {
 
 			return this.edit(function (blob) {
 
-
 				try {
 
-					var header = getHeaderComment(settings.header, blob.content);
+					var header = getHeaderComment(settings.header, blob.content),
+						ast = UglifyJS.parse(blob.content, {filename: blob.source});
 
-					// parse code and get the initial AST
-					var ast = jsp.parse(blob.content);
+					ast.figure_out_scope();
+					ast = ast.transform(compressor);
+					ast.figure_out_scope();
+					ast.compute_char_frequency();
+					ast.mangle_names();
 
-					// get a new AST with mangled names
-					ast = pro.ast_mangle(ast);
-
-					// get an AST with compression optimizations
-					ast = pro.ast_squeeze(ast);
-
-					// compressed code here
-					var final_code = pro.gen_code(ast);
-
-					if (settings.linebreak > 0) {
-						final_code = pro.split_lines(final_code, settings.linebreak);
-					}
-
-					blob.content = header + final_code;
+					blob.content = header + ast.print_to_string();
 
 				} catch (err) {
 					fQuery.error({
