@@ -7,9 +7,9 @@ var fs = require('fs'),
 	_ = require('underscore'),
 	moment = require('moment'),
 
-	fQuery = require('../fQuery'),
-	Event = require('../Event'),
-	color = require('../format/color'),
+	fQuery = require('../../lib/fQuery'),
+	Event = require('../../lib/Event'),
+	color = require('../../lib/format/color'),
 	Target = require('./Target'),
 
 	noop = function () {},

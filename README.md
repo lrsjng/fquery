@@ -13,7 +13,8 @@ fQuery is provided under the terms of the [MIT License](http://github.com/lrsjng
 
 ### develop branch
 
-* ...
+* moves `makejs` to a new tools section
+* integrates [wepp](http://larsjung.de/wepp/)
 
 
 ### v0.9.0 - *2013-07-31*
