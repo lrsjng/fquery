@@ -1,5 +1,5 @@
 # fQuery
-File selection and processing for Node.js. `makejs` included.
+File selection and processing for Node.js. `makejs` and `wepp` included.
 
 * to report a bug or make a feature request please create [a new issue](http://github.com/lrsjng/fquery/issues/new).
 * website: <http://larsjung.de/fquery/>
