@@ -16,7 +16,8 @@ fQuery is provided under the terms of the [MIT License](http://github.com/lrsjng
 * moves `makejs` to a new tools section
 * integrates [wepp](http://larsjung.de/wepp/)
 * replaces `rmfr` with `DELETE`, no longer needs `I_AM_SURE`
-* add uppercase methods `MOVE`, `COPY`, `WRITE` which overwrite existing files by default
+* adds uppercase methods `MOVE`, `COPY`, `WRITE` which overwrite existing files by default
+* adds `map` function
 
 
 ### v0.9.0 - *2013-07-31*
