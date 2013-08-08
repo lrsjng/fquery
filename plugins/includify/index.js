@@ -3,7 +3,11 @@
 
 var _ = require('underscore'),
 
-	includify = require('./includify');
+	includify = require('./includify'),
+
+	defaults = {
+		charset: 'utf-8'
+	};
 
 
 module.exports = function (fQuery) {
@@ -12,12 +16,13 @@ module.exports = function (fQuery) {
 
 		includify: function (options) {
 
-			var fquery = this;
+			var fquery = this,
+				settings = _.extend({}, defaults, options);
 
 			return this.edit(function (blob) {
 
 				try {
-					blob.content = includify({ file: blob.source, content: blob.content });
+					blob.content = includify({ file: blob.source, content: blob.content, charset: settings.charset });
 				} catch (err) {
 					fQuery.error({
 						method: 'includify',
