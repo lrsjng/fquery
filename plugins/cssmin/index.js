@@ -12,7 +12,10 @@ var fs = require('fs'),
 		if (arg === '!') {
 			arg = /^!/;
 		}
-		if (arg !== true && !_.isRegExp(arg)) {
+		if (_.isString(arg)) {
+			return arg;
+		}
+		if (!_.isRegExp(arg)) {
 			return '';
 		}
 
