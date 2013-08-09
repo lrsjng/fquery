@@ -3,7 +3,7 @@
 
 var path = require('path'),
 	_ = require('underscore'),
-	fQuery = require('fquery'),
+	fQuery = require('../../lib/fQuery'),
 	gzipjs = require('gzip-js'),
 
 	getHeaderComment = function (content) {
@@ -34,9 +34,7 @@ var path = require('path'),
 			fQuery.info({ method: 'css' + compressionMark, message: message });
 			f.less();
 			if (options.compression) {
-				f.cssmin({
-					linebreak: options.linebreak
-				});
+				f.cssmin();
 			}
 
 		} else if (ext === '.js') {
@@ -44,9 +42,7 @@ var path = require('path'),
 			fQuery.info({ method: 'js' + compressionMark, message: message });
 			f.includify();
 			if (options.compression) {
-				f.uglifyjs({
-					linebreak: options.linebreak
-				});
+				f.uglifyjs();
 			}
 		} else {
 
@@ -57,7 +53,7 @@ var path = require('path'),
 			f.wrap(header, '');
 		}
 		if (options.overwrite) {
-			f.write(fQuery.OVERWRITE, outFile);
+			f.WRITE(outFile);
 		} else {
 			f.write(outFile);
 		}
@@ -73,11 +69,11 @@ var path = require('path'),
 
 	processDir = function (options, inDir, outDir) {
 
-		fQuery.info({ method: 'processDir', message: inDir + ' -> ' + outDir });
-
 		if (!inDir || !outDir) {
-			fQuery.error({ method: 'processFile', message: 'input and output file must be specified' });
+			fQuery.error({ method: 'processDir', message: 'input and output dir must be specified' });
 		}
+
+		fQuery.info({ method: 'processDir', message: inDir + ' -> ' + outDir });
 
 		fQuery(inDir + ': **/*.css, **/*.less, **/*.js, ! inc/**, ! lib/**').each(function (blob) {
 
@@ -86,10 +82,38 @@ var path = require('path'),
 
 			processFile(options, inFile, outFile);
 		});
+	},
+
+	processOptions = function (options) {
+
+		try {
+
+			if (options.inFile && options.outFile) {
+
+				options.inFile = path.resolve(options.inFile);
+				options.outFile = path.resolve(options.outFile);
+				wepp.processFile(options, options.inFile, options.outFile);
+
+			} else if (options.inDir && options.outDir) {
+
+				options.inDir = path.resolve(options.inDir);
+				options.outDir = path.resolve(options.outDir);
+				wepp.processDir(options, options.inDir, options.outDir);
+
+			} else {
+
+				fQuery.error({ method: 'wepp', message: 'either input and output file or input and output directory must be specified' });
+
+			}
+
+		} catch (err) {
+			process.stdout.write(err.toString());
+		}
 	};
 
 
 module.exports = {
 	processFile: processFile,
-	processDir: processDir
+	processDir: processDir,
+	process: processOptions
 };
