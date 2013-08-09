@@ -20,7 +20,7 @@ var _ = require('underscore'),
 			.option('--overwrite', 'overwrites already existing targets files')
 			.parse(process.argv),
 
-	options = _.pick(cli, 'inFile', 'outFile', 'inDir', 'outDir', 'charset', 'linebreak', 'compression', 'stripHeader', 'size', 'overwrite');
+	options = _.pick(cli, 'inFile', 'outFile', 'inDir', 'outDir', 'charset', 'compression', 'stripHeader', 'size', 'overwrite');
 
 console.log(options);
 wepp.process(options);
