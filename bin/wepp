@@ -22,5 +22,4 @@ var _ = require('underscore'),
 
 	options = _.pick(cli, 'inFile', 'outFile', 'inDir', 'outDir', 'charset', 'compression', 'stripHeader', 'size', 'overwrite');
 
-console.log(options);
 wepp.process(options);
