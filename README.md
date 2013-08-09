@@ -11,7 +11,7 @@ fQuery is provided under the terms of the [MIT License](http://github.com/lrsjng
 ## Changelog
 
 
-### develop branch
+### v0.10.0 - *2013-08-09*
 
 * moves `makejs` to a new tools section
 * integrates [wepp](http://larsjung.de/wepp/)
