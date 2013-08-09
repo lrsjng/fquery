@@ -1,5 +1,5 @@
 # fQuery
-File selection and processing for Node.js. `makejs` included.
+File selection and processing for Node.js. `makejs` and `wepp` included.
 
 * to report a bug or make a feature request please create [a new issue](http://github.com/lrsjng/fquery/issues/new).
 * website: <http://larsjung.de/fquery/>
@@ -9,6 +9,16 @@ fQuery is provided under the terms of the [MIT License](http://github.com/lrsjng
 
 
 ## Changelog
+
+
+### v0.10.0 - *2013-08-09*
+
+* moves `makejs` to a new tools section
+* integrates [wepp](http://larsjung.de/wepp/)
+* replaces `rmfr` with `DELETE`, no longer needs `I_AM_SURE`
+* adds uppercase methods `MOVE`, `COPY`, `WRITE` which overwrite existing files by default
+* adds `map` function
+
 
 ### v0.9.0 - *2013-07-31*
 

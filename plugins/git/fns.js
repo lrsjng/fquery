@@ -61,5 +61,10 @@ module.exports = function (dir, options, callback) {
 		};
 	});
 
-	async.parallel(run, callback);
+	async.parallel(run, function (err, result) {
+
+		result.buildSuffix = result.revListOriginMasterHead.length + '~' + result.revParseHead.slice(0, 7);
+
+		callback(err, result);
+	});
 };

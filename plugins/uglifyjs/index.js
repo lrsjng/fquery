@@ -3,11 +3,6 @@
 
 var _ = require('underscore'),
 	UglifyJS = require('uglify-js'),
-	compressor = UglifyJS.Compressor({
-		unused: false,
-		side_effects: false
-		// warnings: false
-	}),
 
 	reHeaderComment = /^\s*(\/\*((.|\n|\r)*?)\*\/)/,
 	getHeaderComment = function (arg, content) {
@@ -15,7 +10,10 @@ var _ = require('underscore'),
 		if (arg === '!') {
 			arg = /^!/;
 		}
-		if (arg !== true && !_.isRegExp(arg)) {
+		if (_.isString(arg)) {
+			return arg;
+		}
+		if (!_.isRegExp(arg)) {
 			return '';
 		}
 
@@ -28,8 +26,9 @@ var _ = require('underscore'),
 	},
 
 	defaults = {
-		header: true,
-		linebreak: 32 * 1024
+		header: '!',
+		compressor: {},
+		beautifier: {}
 	};
 
 
@@ -41,7 +40,8 @@ module.exports = function (fQuery) {
 		uglifyjs: function (options) {
 
 			var fquery = this,
-				settings = _.extend({}, defaults, options);
+				settings = _.extend({}, defaults, options),
+				compressor = UglifyJS.Compressor(settings.compressor);
 
 			return this.edit(function (blob) {
 
@@ -56,7 +56,7 @@ module.exports = function (fQuery) {
 					ast.compute_char_frequency();
 					ast.mangle_names();
 
-					blob.content = header + ast.print_to_string();
+					blob.content = header + ast.print_to_string(settings.beautifier);
 
 				} catch (err) {
 					fQuery.error({
