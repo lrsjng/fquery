@@ -2,8 +2,7 @@
 'use strict';
 
 var path = require('path'),
-	_ = require('underscore'),
-	docco = require('./docco');
+	_ = require('underscore');
 
 
 module.exports = function (fQuery) {
