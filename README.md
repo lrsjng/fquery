@@ -14,6 +14,7 @@ fQuery is provided under the terms of the [MIT License](http://github.com/lrsjng
 ### develop branch
 
 * adds `hash` plugin
+* removes `css-condensed`, `live` and `zip` plugin
 
 
 ### v0.10.0 - *2013-08-09*
