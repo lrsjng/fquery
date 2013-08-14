@@ -22,11 +22,6 @@ var fs = require('fs'),
 		var match = content.match(reHeaderComment);
 		var header = match ? match[1] + '\n' : '';
 
-		// cssmin keeps them anyway
-		if (match && match[2].match(/^!/)) {
-			header = '';
-		}
-
 		if (match && _.isRegExp(arg) && !match[2].match(arg)) {
 			header = '';
 		}
@@ -62,9 +57,12 @@ module.exports = function (fQuery) {
 
 				try {
 
-					var header = getHeaderComment(settings.header, blob.content);
+					var header = getHeaderComment(settings.header, blob.content),
+						minified = YAHOO.compressor.cssmin(blob.content, settings.linebreak);
 
-					blob.content = header + YAHOO.compressor.cssmin(blob.content, settings.linebreak);
+					minified = minified.replace(reHeaderComment, '');
+
+					blob.content = header + minified;
 
 				} catch (err) {
 					fQuery.error({

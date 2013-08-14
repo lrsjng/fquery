@@ -10,17 +10,15 @@ var _ = require('underscore'),
 		if (arg === '!') {
 			arg = /^!/;
 		}
-		if (arg !== true && !_.isRegExp(arg)) {
+		if (_.isString(arg)) {
+			return arg;
+		}
+		if (!_.isRegExp(arg)) {
 			return '';
 		}
 
 		var match = content.match(reHeaderComment);
 		var header = match ? match[1] + '\n' : '';
-
-		// cleancss keeps them anyway
-		if (match && match[2].match(/^!/)) {
-			header = '';
-		}
 
 		if (match && _.isRegExp(arg) && !match[2].match(arg)) {
 			header = '';
@@ -29,9 +27,9 @@ var _ = require('underscore'),
 	},
 
 	defaults = {
-		header: '!'
+		header: '!',
+		keepSpecialComments: 0
 	};
-
 
 
 module.exports = function (fQuery) {
@@ -49,7 +47,7 @@ module.exports = function (fQuery) {
 
 					var header = getHeaderComment(settings.header, blob.content);
 
-					blob.content = header + cleancss.process(blob.content);
+					blob.content = header + cleancss.process(blob.content, settings);
 
 				} catch (err) {
 					fQuery.error({
