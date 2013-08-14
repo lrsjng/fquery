@@ -12,17 +12,6 @@ module.exports = function (fQuery) {
 
 		docco: function (dest, callback) {
 
-			// docco({
-			// 	dest: dest,
-			// 	files: _.pluck(this, 'source'),
-			// 	callback: function () {
-
-			// 		if (_.isFunction(callback)) {
-			// 			callback();
-			// 		}
-			// 	}
-			// });
-
 			fQuery.info({
 				method: 'docco',
 				message: 'not available yet',
