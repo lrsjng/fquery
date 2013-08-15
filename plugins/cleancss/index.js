@@ -1,45 +1,47 @@
 /*jshint node: true */
 'use strict';
 
-var _ = require('underscore'),
-	cleancss = require('clean-css'),
-
-	reHeaderComment = /^\s*(\/\*((.|\n|\r)*?)\*\/)/,
-	getHeaderComment = function (arg, content) {
-
-		if (arg === '!') {
-			arg = /^!/;
-		}
-		if (_.isString(arg)) {
-			return arg;
-		}
-		if (!_.isRegExp(arg)) {
-			return '';
-		}
-
-		var match = content.match(reHeaderComment);
-		var header = match ? match[1] + '\n' : '';
-
-		if (match && _.isRegExp(arg) && !match[2].match(arg)) {
-			header = '';
-		}
-		return header;
-	},
-
-	defaults = {
-		header: '!',
-		keepSpecialComments: 0
-	};
-
 
 module.exports = function (fQuery) {
 
-	return  {
+
+	var _ = require('underscore'),
+
+		reHeaderComment = /^\s*(\/\*((.|\n|\r)*?)\*\/)/,
+		getHeaderComment = function (arg, content) {
+
+			if (arg === '!') {
+				arg = /^!/;
+			}
+			if (_.isString(arg)) {
+				return arg;
+			}
+			if (!_.isRegExp(arg)) {
+				return '';
+			}
+
+			var match = content.match(reHeaderComment);
+			var header = match ? match[1] + '\n' : '';
+
+			if (match && _.isRegExp(arg) && !match[2].match(arg)) {
+				header = '';
+			}
+			return header;
+		},
+
+		defaults = {
+			header: '!',
+			keepSpecialComments: 0
+		};
+
+
+	return {
 
 		cleancss: function (options) {
 
 			var fquery = this,
-				settings = _.extend({}, defaults, options);
+				settings = _.extend({}, defaults, options),
+				cleancss = require('clean-css');
 
 			return this.edit(function (blob) {
 
