@@ -32,6 +32,10 @@ module.exports = function (fQuery) {
 				});
 			}
 
+			// settings.callback is deprecated. Make it backwards compatible.
+			settings.done = settings.callback || settings.done;
+			settings.fail = settings.callback || settings.fail;
+
 			settings.target = path.resolve(settings.target);
 			settings.dir = path.resolve(settings.dir);
 
