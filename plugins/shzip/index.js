@@ -11,7 +11,8 @@ module.exports = function (fQuery) {
 		defaults = {
 			target: null,
 			dir: null,
-			callback: function () {}
+			done: function () {},
+			fail: function () {}
 		};
 
 
@@ -45,8 +46,8 @@ module.exports = function (fQuery) {
 				args: args,
 				opts: { cwd: settings.dir },
 				onStdout: null,
-				done: settings.callback,
-				fail: settings.callback
+				done: settings.done,
+				fail: settings.fail
 			});
 
 			return this;
