@@ -1,35 +1,37 @@
 /*jshint node: true */
 'use strict';
 
-var _ = require('underscore'),
-	jshint = require('jshint').JSHINT,
-
-	toGlobals = function () {
-
-		var globals = {};
-
-		_.each(arguments, function (arg) {
-
-			if (_.isArray(arg)) {
-				_.each(arg, function (glob) {
-					globals[glob] = true;
-				});
-			} else {
-				globals = _.extend({}, globals, arg);
-			}
-		});
-
-		return globals;
-	};
-
 
 module.exports = function (fQuery) {
+
+
+	var _ = require('underscore'),
+
+		toGlobals = function () {
+
+			var globals = {};
+
+			_.each(arguments, function (arg) {
+
+				if (_.isArray(arg)) {
+					_.each(arg, function (glob) {
+						globals[glob] = true;
+					});
+				} else {
+					globals = _.extend({}, globals, arg);
+				}
+			});
+
+			return globals;
+		};
+
 
 	return {
 
 		jshint: function (options, globals) {
 
-			var fquery = this;
+			var fquery = this,
+				jshint = require('jshint').JSHINT;
 
 			globals = toGlobals(globals, options.predef);
 

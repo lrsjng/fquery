@@ -1,39 +1,39 @@
 /*jshint node: true */
 'use strict';
 
-var _ = require('underscore'),
-	UglifyJS = require('uglify-js'),
-
-	reHeaderComment = /^\s*(\/\*((.|\n|\r)*?)\*\/)/,
-	getHeaderComment = function (arg, content) {
-
-		if (arg === '!') {
-			arg = /^!/;
-		}
-		if (_.isString(arg)) {
-			return arg;
-		}
-		if (!_.isRegExp(arg)) {
-			return '';
-		}
-
-		var match = content.match(reHeaderComment);
-		var header = match ? match[1] + '\n' : '';
-		if (match && _.isRegExp(arg) && !match[2].match(arg)) {
-			header = '';
-		}
-		return header;
-	},
-
-	defaults = {
-		header: '!',
-		compressor: {},
-		beautifier: {}
-	};
-
-
 
 module.exports = function (fQuery) {
+
+
+	var _ = require('underscore'),
+
+		reHeaderComment = /^\s*(\/\*((.|\n|\r)*?)\*\/)/,
+		getHeaderComment = function (arg, content) {
+
+			if (arg === '!') {
+				arg = /^!/;
+			}
+			if (_.isString(arg)) {
+				return arg;
+			}
+			if (!_.isRegExp(arg)) {
+				return '';
+			}
+
+			var match = content.match(reHeaderComment);
+			var header = match ? match[1] + '\n' : '';
+			if (match && _.isRegExp(arg) && !match[2].match(arg)) {
+				header = '';
+			}
+			return header;
+		},
+
+		defaults = {
+			header: '!',
+			compressor: {},
+			beautifier: {}
+		};
+
 
 	return {
 
@@ -41,6 +41,7 @@ module.exports = function (fQuery) {
 
 			var fquery = this,
 				settings = _.extend({}, defaults, options),
+				UglifyJS = require('uglify-js'),
 				compressor = UglifyJS.Compressor(settings.compressor);
 
 			return this.edit(function (blob) {

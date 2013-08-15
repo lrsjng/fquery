@@ -1,17 +1,16 @@
 /*jshint node: true */
 'use strict';
 
-var _ = require('underscore'),
-	handlebars = require('handlebars');
-
 
 module.exports = function (fQuery) {
+
 
 	return {
 
 		handlebars: function (data) {
 
-			var fquery = this;
+			var fquery = this,
+				handlebars = require('handlebars');
 
 			return this.edit(function (blob) {
 
