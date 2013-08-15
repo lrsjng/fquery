@@ -16,7 +16,7 @@ module.exports = function (fQuery) {
 		};
 
 
-	return  {
+	return {
 
 		shzip: function (options) {
 
