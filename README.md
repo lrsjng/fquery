@@ -11,6 +11,11 @@ fQuery is provided under the terms of the [MIT License](https://github.com/lrsjn
 ## Changelog
 
 
+### develop branch
+
+* ...
+
+
 ### v0.11.0 - *2013-08-16*
 
 * adds `newerThan`
