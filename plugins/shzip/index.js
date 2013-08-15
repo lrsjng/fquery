@@ -20,7 +20,8 @@ module.exports = function (fQuery) {
 		shzip: function (options) {
 
 			var fquery = this,
-				settings = _.extend({}, defaults, options);
+				settings = _.extend({}, defaults, options),
+				args;
 
 			if (!_.isString(settings.target)) {
 				fQuery.error({
@@ -29,27 +30,24 @@ module.exports = function (fQuery) {
 					fquery: fquery
 				});
 			}
-			if (!_.isFunction(settings.callback)) {
-				fQuery.error({
-					method: 'shzip',
-					message: 'callback needs to be a function',
-					fquery: fquery
-				});
-			}
 
 			settings.target = path.resolve(settings.target);
 			settings.dir = path.resolve(settings.dir);
 
-			var cmd = 'zip',
-				args = ['-o', settings.target],
-				opts = { cwd: settings.dir };
-
+			args = ['-o', settings.target];
 			this.each(function (blob) {
 
 				args.push(path.relative(settings.dir, blob.source));
 			});
 
-			fQuery.spawn_process(cmd, args, opts, settings.callback, settings.callback);
+			fQuery.spawn_process({
+				cmd: 'zip',
+				args: args,
+				opts: { cwd: settings.dir },
+				onStdout: null,
+				done: settings.callback,
+				fail: settings.callback
+			});
 
 			return this;
 		}
