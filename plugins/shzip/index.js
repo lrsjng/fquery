@@ -45,7 +45,7 @@ module.exports = function (fQuery) {
 				args.push(path.relative(settings.dir, blob.source));
 			});
 
-			fQuery.spawn_process({
+			fQuery.spawnProcess({
 				cmd: 'zip',
 				args: args,
 				opts: { cwd: settings.dir },

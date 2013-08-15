@@ -1,20 +1,24 @@
 # fQuery
 File selection and processing for Node.js. `makejs` and `wepp` included.
 
-* to report a bug or make a feature request please create [a new issue](http://github.com/lrsjng/fquery/issues/new).
+* to report a bug or make a feature request please create [a new issue](https://github.com/lrsjng/fquery/issues/new).
 * website: <http://larsjung.de/fquery/>
-* sources: <http://github.com/lrsjng/fquery>
+* sources: <https://github.com/lrsjng/fquery>
 
-fQuery is provided under the terms of the [MIT License](http://github.com/lrsjng/fquery/blob/develop/LICENSE.md).
+fQuery is provided under the terms of the [MIT License](https://github.com/lrsjng/fquery/blob/develop/LICENSE.md).
 
 
 ## Changelog
 
 
-### develop branch
+### v0.11.0 - *2013-08-16*
 
+* adds `newerThan`
+* adds `spawnProcess`
 * adds `hash` plugin
 * removes `css-condensed`, `live` and `zip` plugin
+* adds lazy load for plugins
+* minor fixes
 
 
 ### v0.10.0 - *2013-08-09*
