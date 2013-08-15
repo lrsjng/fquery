@@ -1,19 +1,19 @@
 /*jshint node: true */
 'use strict';
 
-var fs = require('fs'),
-	path = require('path'),
-	spawn = require('child_process').spawn,
-	_ = require('underscore'),
-	moment = require('moment'),
-
-	defaults = {
-		target: null,
-		dir: null,
-		callback: function () {}
-	};
 
 module.exports = function (fQuery) {
+
+
+	var path = require('path'),
+		_ = require('underscore'),
+
+		defaults = {
+			target: null,
+			dir: null,
+			callback: function () {}
+		};
+
 
 	return  {
 
@@ -44,40 +44,13 @@ module.exports = function (fQuery) {
 				args = ['-o', settings.target],
 				opts = { cwd: settings.dir };
 
-			fQuery.info({
-				method: 'shzip',
-				message: cmd + ' ' + args.join(' '),
-				fquery: fquery
-			});
-
 			this.each(function (blob) {
 
 				args.push(path.relative(settings.dir, blob.source));
 			});
 
-			var proc = spawn(cmd, args, opts);
+			fQuery.spawn_process(cmd, args, opts, settings.callback, settings.callback);
 
-			proc.stderr.on('data', function (data) {
-				process.stderr.write(data);
-			});
-			proc.on('exit', function (code) {
-				if (code) {
-					fQuery.error({
-						method: 'shzip',
-						message: 'exit code ' + code,
-						fquery: fquery,
-						data: code
-					});
-				} else {
-					fQuery.ok({
-						method: 'shzip',
-						message: 'created zipball ' + settings.target,
-						fquery: fquery,
-						data: settings.target
-					});
-				}
-				settings.callback(code);
-			});
 			return this;
 		}
 	};
