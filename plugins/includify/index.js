@@ -1,23 +1,24 @@
 /*jshint node: true */
 'use strict';
 
-var _ = require('underscore'),
-
-	includify = require('./includify'),
-
-	defaults = {
-		charset: 'utf-8'
-	};
-
 
 module.exports = function (fQuery) {
+
+
+	var _ = require('underscore'),
+
+		defaults = {
+			charset: 'utf-8'
+		};
+
 
 	return {
 
 		includify: function (options) {
 
 			var fquery = this,
-				settings = _.extend({}, defaults, options);
+				settings = _.extend({}, defaults, options),
+				includify = require('./includify');
 
 			return this.edit(function (blob) {
 
