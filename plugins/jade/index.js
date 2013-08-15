@@ -1,26 +1,29 @@
 /*jshint node: true */
 'use strict';
 
-var _ = require('underscore'),
-	jade = require('jade'),
-
-	reJadeError = /(\w+):\s+(.*?):(\d*).*\n(?:\s.*\n*)*(.*)/,
-
-	parseJadeError = function (err) {
-
-		var match = err.toString().match(reJadeError);
-		if (!match) {
-			return {};
-		}
-		return { type: match[1], file: match[2], line: parseInt(match[3], 10), message: match[4] };
-	};
-
 
 module.exports = function (fQuery) {
+
+
+	var _ = require('underscore'),
+
+		reJadeError = /(\w+):\s+(.*?):(\d*).*\n(?:\s.*\n*)*(.*)/,
+
+		parseJadeError = function (err) {
+
+			var match = err.toString().match(reJadeError);
+			if (!match) {
+				return {};
+			}
+			return { type: match[1], file: match[2], line: parseInt(match[3], 10), message: match[4] };
+		};
+
 
 	return {
 
 		jade: function (locals, options) {
+
+			var jade = require('jade');
 
 			return this.edit(function (blob, idx, fquery) {
 
