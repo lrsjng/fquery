@@ -1,9 +1,6 @@
 /*jshint node: true */
 'use strict';
 
-var _ = require('underscore'),
-	mustache = require('mustache');
-
 
 module.exports = function (fQuery) {
 
@@ -11,7 +8,8 @@ module.exports = function (fQuery) {
 
 		mustache: function (view) {
 
-			var fquery = this;
+			var fquery = this,
+				mustache = require('mustache');
 
 			return this.edit(function (blob) {
 
