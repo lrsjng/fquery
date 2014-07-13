@@ -4,8 +4,8 @@
 
 var path = require('path'),
 	_ = require('underscore'),
+	chalk = require('chalk'),
 
-	color = require('../lib/fquery/format/color'),
 	MakeJs = require('../lib/makejs/MakeJs'),
 
 	pkg = require('../package.json'),
@@ -24,7 +24,7 @@ var path = require('path'),
 
 
 if (!cli.color) {
-	color.useColors = false;
+	chalk.enabled = false;
 }
 
 
@@ -39,18 +39,18 @@ try {
 if (cli.showTargets) {
 
 	var s = '';
-	s += color('cyan', 'file: ' + file + '\n');
-	s += color('cyan', 'defaults: ' + makejs._defaults.join(', ') + '\n');
+	s += chalk.cyan('file: ' + file + '\n');
+	s += chalk.cyan('defaults: ' + makejs._defaults.join(', ') + '\n');
 
 	_.each(makejs._targets, function (target) {
 		s += '\n';
-		s += color('cyanL', target.name);
+		s += chalk.cyan.bold(target.name);
 		if (target.deps.length) {
-			s += color('cyan', '  ->  [' + target.deps.join(', ') + ']');
+			s += chalk.cyan('  ->  [' + target.deps.join(', ') + ']');
 		}
 		s += '\n';
 		if (target.desc) {
-			s += color('blackL', target.desc + '\n');
+			s += chalk.grey(target.desc + '\n');
 		}
 	});
 
