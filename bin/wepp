@@ -4,7 +4,7 @@
 
 var _ = require('underscore'),
 
-	wepp = require('../tools/wepp/wepp'),
+	wepp = require('../lib/wepp/wepp'),
 
 	pkg = require('../package.json'),
 	cli = require('commander')

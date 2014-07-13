@@ -5,8 +5,8 @@
 var path = require('path'),
 	_ = require('underscore'),
 
-	color = require('../lib/format/color'),
-	MakeJs = require('../tools/makejs/MakeJs'),
+	color = require('../lib/fquery/format/color'),
+	MakeJs = require('../lib/makejs/MakeJs'),
 
 	pkg = require('../package.json'),
 	cli = require('commander')

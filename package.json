@@ -21,7 +21,7 @@
     "type": "git",
     "url": "https://github.com/lrsjng/fQuery.git"
   },
-  "main": "./lib/fQuery",
+  "main": "./lib/fquery/fQuery",
   "bin": {
     "makejs": "./bin/makejs",
     "wepp": "./bin/wepp"
@@ -47,6 +47,6 @@
     "underscore": "~1.6.0"
   },
   "engines": {
-    "node": ">=0.8"
+    "node": ">=0.10"
   }
 }
