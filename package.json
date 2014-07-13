@@ -4,18 +4,18 @@
   "version": "0.11.0",
   "devbuild": true,
   "description": "file selection and processing for node",
-  "url": "http://larsjung.de/fquery/",
+  "homepage": "http://larsjung.de/fquery/",
+  "bugs": "https://github.com/lrsjng/fQuery/issues",
   "keywords": [
     "file",
     "tool",
     "preprocessor",
-    "less",
-    "css",
-    "lesscss",
-    "js",
-    "javascript"
+    "make",
+    "build",
+    "asset",
+    "frontend"
   ],
-  "author": "Lars Jung <lrsjng@gmail.com>",
+  "author": "Lars Jung <lrsjng@gmail.com> (http://larsjung.de)",
   "license": "MIT",
   "repository": {
     "type": "git",
