@@ -5,7 +5,7 @@
 var assert = require('assert'),
 	_ = require('underscore'),
 
-	Event = require('../lib/Event');
+	Event = require('../lib/fquery/Event');
 
 
 describe('Event (constructor)', function () {
@@ -15,9 +15,15 @@ describe('Event (constructor)', function () {
 		assert.ok(_.isFunction(Event));
 	});
 
-	it('has 0 own property', function () {
+	it('has 1 own property', function () {
 
-		assert.strictEqual(_.size(Event), 0);
+		assert.strictEqual(_.size(Event), 1);
+		assert.deepEqual(Object.keys(Event.prototype), ['toString']);
+	});
+
+	it('expectes 1 parameter', function () {
+
+		assert.strictEqual(Event.length, 1);
 	});
 
 	it('sets arguments correct', function () {
