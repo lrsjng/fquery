@@ -1,11 +1,11 @@
-/*jshint node: true, strict: false */
+/*jshint node: true */
 /*global describe, before, beforeEach, it */
 
 
 var assert = require('assert'),
 	_ = require('underscore'),
 
-	Event = require('../lib/fquery/Event');
+	Event = require('../../lib/fquery/Event');
 
 
 describe('Event (constructor)', function () {
@@ -64,7 +64,7 @@ describe('Event (constructor)', function () {
 		assert.strictEqual(event.notset, undefined);
 	});
 
-	describe('#ok', function () {
+	describe('.ok', function () {
 
 		it('is function', function () {
 
@@ -77,7 +77,7 @@ describe('Event (constructor)', function () {
 		});
 	});
 
-	describe('#fail', function () {
+	describe('.fail', function () {
 
 		it('is function', function () {
 
@@ -90,7 +90,7 @@ describe('Event (constructor)', function () {
 		});
 	});
 
-	describe('#info', function () {
+	describe('.info', function () {
 
 		it('is function', function () {
 
@@ -103,7 +103,7 @@ describe('Event (constructor)', function () {
 		});
 	});
 
-	describe('#warning', function () {
+	describe('.warning', function () {
 
 		it('is function', function () {
 
@@ -116,7 +116,7 @@ describe('Event (constructor)', function () {
 		});
 	});
 
-	describe('#error', function () {
+	describe('.error', function () {
 
 		it('is function', function () {
 
@@ -166,9 +166,9 @@ describe('event (instance)', function () {
 		assert.ok(_.isObject(event));
 	});
 
-	describe('#toString', function () {
+	describe('.toString', function () {
 
-		it('#is function', function () {
+		it('is function', function () {
 
 			assert.ok(_.isFunction(event.toString));
 		});
