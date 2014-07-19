@@ -82,7 +82,7 @@ describe('fQuery.fn.isPending()', function () {
 		var x = fQuery();
 		assert.strictEqual(x.isPending(), false);
 
-		x = fQuery('test/assets/*');
+		x = fQuery('test/assets/files-abc/*');
 		assert.strictEqual(x.isPending(), false);
 	});
 

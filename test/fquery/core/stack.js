@@ -85,7 +85,7 @@ describe('fQuery.fn.push()', function () {
 
 	it('stack okay for blob value push', function () {
 
-		var b = fQuery.Blob.select('test/assets/a');
+		var b = fQuery.Blob.select('test/assets/files-abc/a');
 		var x = fQuery().push(b);
 		assert.deepEqual(x._stack, [[b], []]);
 		assert.deepEqual(slice(x), [b]);
@@ -94,9 +94,9 @@ describe('fQuery.fn.push()', function () {
 
 	it('stack okay for blob array push', function () {
 
-		var b1 = fQuery.Blob.select('test/assets/a');
-		var b2 = fQuery.Blob.select('test/assets/b');
-		var b3 = fQuery.Blob.select('test/assets/c');
+		var b1 = fQuery.Blob.select('test/assets/files-abc/a');
+		var b2 = fQuery.Blob.select('test/assets/files-abc/b');
+		var b3 = fQuery.Blob.select('test/assets/files-abc/c');
 		var x = fQuery().push([b1, b2, b3]);
 		assert.deepEqual(x._stack, [[b1, b2, b3], []]);
 		assert.deepEqual(slice(x), [b1, b2, b3]);
@@ -105,9 +105,9 @@ describe('fQuery.fn.push()', function () {
 
 	it('stack okay for mixed array push', function () {
 
-		var b1 = fQuery.Blob.select('test/assets/a');
-		var b2 = fQuery.Blob.select('test/assets/b');
-		var b3 = fQuery.Blob.select('test/assets/c');
+		var b1 = fQuery.Blob.select('test/assets/files-abc/a');
+		var b2 = fQuery.Blob.select('test/assets/files-abc/b');
+		var b3 = fQuery.Blob.select('test/assets/files-abc/c');
 		var x = fQuery().push([b1, 1, b2, true, b3, null]);
 		assert.deepEqual(x._stack, [[b1, b2, b3], []]);
 		assert.deepEqual(slice(x), [b1, b2, b3]);
@@ -116,9 +116,9 @@ describe('fQuery.fn.push()', function () {
 
 	it('stack okay for multi blob array push', function () {
 
-		var b1 = fQuery.Blob.select('test/assets/a');
-		var b2 = fQuery.Blob.select('test/assets/b');
-		var b3 = fQuery.Blob.select('test/assets/c');
+		var b1 = fQuery.Blob.select('test/assets/files-abc/a');
+		var b2 = fQuery.Blob.select('test/assets/files-abc/b');
+		var b3 = fQuery.Blob.select('test/assets/files-abc/c');
 		var x = fQuery().push([b1, b2, b3]).push([b1]).push(b3);
 		assert.deepEqual(x._stack, [[b3], [b1], [b1, b2, b3], []]);
 		assert.deepEqual(slice(x), [b3]);
@@ -182,9 +182,9 @@ describe('fQuery.fn.pop()', function () {
 
 	it('stack okay for multi pop 3', function () {
 
-		var b1 = fQuery.Blob.select('test/assets/a');
-		var b2 = fQuery.Blob.select('test/assets/b');
-		var b3 = fQuery.Blob.select('test/assets/c');
+		var b1 = fQuery.Blob.select('test/assets/files-abc/a');
+		var b2 = fQuery.Blob.select('test/assets/files-abc/b');
+		var b3 = fQuery.Blob.select('test/assets/files-abc/c');
 		var x = fQuery().push([b1, b2, b3]).push([b3, b1]).push([b1]);
 
 		x.pop();
@@ -230,18 +230,18 @@ describe('fQuery.fn.get()', function () {
 
 	it('returns blob array if no parameter 2', function () {
 
-		var b1 = fQuery.Blob.select('test/assets/a');
-		var b2 = fQuery.Blob.select('test/assets/b');
-		var b3 = fQuery.Blob.select('test/assets/c');
+		var b1 = fQuery.Blob.select('test/assets/files-abc/a');
+		var b2 = fQuery.Blob.select('test/assets/files-abc/b');
+		var b3 = fQuery.Blob.select('test/assets/files-abc/c');
 		var x = fQuery().push([b1, b2, b3]);
 		assert.deepEqual(x.get(), [b1, b2, b3]);
 	});
 
 	it('returns correct value if int parameter', function () {
 
-		var b1 = fQuery.Blob.select('test/assets/a');
-		var b2 = fQuery.Blob.select('test/assets/b');
-		var b3 = fQuery.Blob.select('test/assets/c');
+		var b1 = fQuery.Blob.select('test/assets/files-abc/a');
+		var b2 = fQuery.Blob.select('test/assets/files-abc/b');
+		var b3 = fQuery.Blob.select('test/assets/files-abc/c');
 		var x = fQuery().push([b1, b2, b3]);
 
 		assert.strictEqual(x.get(-4), undefined);
@@ -256,9 +256,9 @@ describe('fQuery.fn.get()', function () {
 
 	it('returns undefined if non int numeric parameter', function () {
 
-		var b1 = fQuery.Blob.select('test/assets/a');
-		var b2 = fQuery.Blob.select('test/assets/b');
-		var b3 = fQuery.Blob.select('test/assets/c');
+		var b1 = fQuery.Blob.select('test/assets/files-abc/a');
+		var b2 = fQuery.Blob.select('test/assets/files-abc/b');
+		var b3 = fQuery.Blob.select('test/assets/files-abc/c');
 		var x = fQuery().push([b1, b2, b3]);
 
 		assert.strictEqual(x.get(1.5), undefined);
@@ -309,9 +309,9 @@ describe('fQuery.fn.each()', function () {
 
 	it('iterates correctly 2', function () {
 
-		var b1 = fQuery.Blob.select('test/assets/a');
-		var b2 = fQuery.Blob.select('test/assets/b');
-		var b3 = fQuery.Blob.select('test/assets/c');
+		var b1 = fQuery.Blob.select('test/assets/files-abc/a');
+		var b2 = fQuery.Blob.select('test/assets/files-abc/b');
+		var b3 = fQuery.Blob.select('test/assets/files-abc/c');
 		var x = fQuery().push([b1, b2, b3]);
 		var list = [];
 
@@ -331,9 +331,9 @@ describe('fQuery.fn.each()', function () {
 
 	it('iterates correctly 3', function () {
 
-		var b1 = fQuery.Blob.select('test/assets/a');
-		var b2 = fQuery.Blob.select('test/assets/b');
-		var b3 = fQuery.Blob.select('test/assets/c');
+		var b1 = fQuery.Blob.select('test/assets/files-abc/a');
+		var b2 = fQuery.Blob.select('test/assets/files-abc/b');
+		var b3 = fQuery.Blob.select('test/assets/files-abc/c');
 		var x = fQuery().push([b1, b2, b3]).push([b2]);
 		var list = [];
 
@@ -395,9 +395,9 @@ describe('fQuery.fn.map()', function () {
 
 	it('iterates correctly 2', function () {
 
-		var b1 = fQuery.Blob.select('test/assets/a');
-		var b2 = fQuery.Blob.select('test/assets/b');
-		var b3 = fQuery.Blob.select('test/assets/c');
+		var b1 = fQuery.Blob.select('test/assets/files-abc/a');
+		var b2 = fQuery.Blob.select('test/assets/files-abc/b');
+		var b3 = fQuery.Blob.select('test/assets/files-abc/c');
 		var x = fQuery().push([b1, b2, b3]);
 		var list = [];
 
@@ -419,9 +419,9 @@ describe('fQuery.fn.map()', function () {
 
 	it('iterates correctly 3', function () {
 
-		var b1 = fQuery.Blob.select('test/assets/a');
-		var b2 = fQuery.Blob.select('test/assets/b');
-		var b3 = fQuery.Blob.select('test/assets/c');
+		var b1 = fQuery.Blob.select('test/assets/files-abc/a');
+		var b2 = fQuery.Blob.select('test/assets/files-abc/b');
+		var b3 = fQuery.Blob.select('test/assets/files-abc/c');
 		var x = fQuery().push([b1, b2, b3]).push([b2]);
 		var list = [];
 
