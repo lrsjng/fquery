@@ -4,15 +4,6 @@
   "version": "0.11.0",
   "devbuild": true,
   "description": "file selection and processing for node",
-  "keywords": [
-    "file",
-    "tool",
-    "preprocessor",
-    "make",
-    "build",
-    "asset",
-    "frontend"
-  ],
   "homepage": "http://larsjung.de/fquery/",
   "bugs": "https://github.com/lrsjng/fQuery/issues",
   "author": "Lars Jung <lrsjng@gmail.com> (http://larsjung.de)",
@@ -22,19 +13,15 @@
     "url": "https://github.com/lrsjng/fQuery.git"
   },
   "main": "./lib/fquery/fQuery",
-  "bin": {
-    "makejs": "./bin/makejs",
-    "wepp": "./bin/wepp"
-  },
   "scripts": {
-    "test": "mocha --recursive -R dot"
+    "test": "mocha --recursive -R dot test",
+    "test-spec": "mocha --recursive -R spec test"
   },
   "dependencies": {
-    "async": "~0.9.0",
     "chalk": "~0.5.1",
     "clean-css": "~2.2.7",
     "commander": "~2.2.0",
-    "docco": "~0.6.3",
+    "escape-string-regexp": "~1.0.1",
     "glob": "~4.0.3",
     "gzip-js": "~0.3.2",
     "handlebars": "~2.0.0-alpha",
@@ -48,8 +35,7 @@
     "rimraf": "~2.2.8",
     "semver": "~2.3.1",
     "uglify-js": "~2.4.15",
-    "underscore": "~1.6.0",
-    "escape-string-regexp": "~1.0.1"
+    "underscore": "~1.6.0"
   },
   "engines": {
     "node": ">=0.10"

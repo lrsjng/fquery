@@ -5,7 +5,22 @@
 var assert = require('assert'),
 	_ = require('underscore'),
 
-	Event = require('../../lib/fquery/Event');
+	Event = require('../../lib/fquery/Event'),
+
+	mockWrite = function (fn) {
+
+		var written = [],
+			writeMock = function () {
+
+				written.push(Array.prototype.slice.call(arguments));
+			},
+			write = process.stdout.write;
+
+		process.stdout.write = writeMock;
+		fn();
+		process.stdout.write = write;
+		return written;
+	};
 
 
 describe('Event (constructor)', function () {
@@ -71,9 +86,12 @@ describe('Event (constructor)', function () {
 			assert.ok(_.isFunction(Event.ok));
 		});
 
-		it('raises no error', function () {
+		it('raises no error and produces output', function () {
 
-			Event.ok();
+			var written = mockWrite(function () { Event.ok(); });
+			assert.strictEqual(written.length, 1);
+			assert.strictEqual(written[0].length, 1);
+			assert.ok(/message/.test(written[0][0]));
 		});
 	});
 
@@ -84,9 +102,12 @@ describe('Event (constructor)', function () {
 			assert.ok(_.isFunction(Event.fail));
 		});
 
-		it('raises no error', function () {
+		it('raises no error and produces output', function () {
 
-			Event.fail();
+			var written = mockWrite(function () { Event.fail(); });
+			assert.strictEqual(written.length, 1);
+			assert.strictEqual(written[0].length, 1);
+			assert.ok(/message/.test(written[0][0]));
 		});
 	});
 
@@ -97,9 +118,12 @@ describe('Event (constructor)', function () {
 			assert.ok(_.isFunction(Event.info));
 		});
 
-		it('raises no error', function () {
+		it('raises no error and produces output', function () {
 
-			Event.info();
+			var written = mockWrite(function () { Event.info(); });
+			assert.strictEqual(written.length, 1);
+			assert.strictEqual(written[0].length, 1);
+			assert.ok(/message/.test(written[0][0]));
 		});
 	});
 
@@ -110,9 +134,12 @@ describe('Event (constructor)', function () {
 			assert.ok(_.isFunction(Event.warning));
 		});
 
-		it('raises no error', function () {
+		it('raises no error and produces output', function () {
 
-			Event.warning();
+			var written = mockWrite(function () { Event.warning(); });
+			assert.strictEqual(written.length, 1);
+			assert.strictEqual(written[0].length, 1);
+			assert.ok(/message/.test(written[0][0]));
 		});
 	});
 

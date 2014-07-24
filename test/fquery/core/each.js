@@ -38,14 +38,18 @@ describe('fQuery.fn.asyncEach()', function () {
 
 		var x = fQuery();
 		var list = [];
+		var promise = x.asyncEach(function (blob, idx) {
 
-		x.asyncEach(function (blob, idx) {
+				list.push([blob, idx]);
+			});
 
-			list.push([blob, idx]);
-		}).then(function () {
+		assert.deepEqual(list, []);
+
+		promise.then(function () {
 
 			assert.deepEqual(list, []);
 		});
+
 		assert.deepEqual(list, []);
 	});
 
@@ -61,15 +65,19 @@ describe('fQuery.fn.asyncEach()', function () {
 			[b2, 1],
 			[b3, 2]
 		];
+		var promise = x.asyncEach(function (blob, idx) {
 
-		x.asyncEach(function (blob, idx) {
+				assert.strictEqual(this, x);
+				list.push([blob, idx]);
+			});
 
-			assert.strictEqual(this, x);
-			list.push([blob, idx]);
-		}).then(function () {
+		assert.deepEqual(list, expected);
+
+		promise.then(function () {
 
 			assert.deepEqual(list, expected);
 		});
+
 		assert.deepEqual(list, expected);
 	});
 
@@ -85,20 +93,24 @@ describe('fQuery.fn.asyncEach()', function () {
 			[b2, 1],
 			[b3, 2]
 		];
+		var promise = x.asyncEach(function (blob, idx, d) {
 
-		x.asyncEach(function (blob, idx, d) {
+				assert.strictEqual(this, x);
+				setTimeout(function () {
 
-			assert.strictEqual(this, x);
-			setTimeout(function () {
+					list.push([blob, idx]);
+					d();
+				}, 0);
+			});
 
-				list.push([blob, idx]);
-				d();
-			}, 1);
-		}).then(function () {
+		assert.deepEqual(list, []);
+
+		promise.then(function () {
 
 			assert.deepEqual(list, expected);
 			done();
 		});
+
 		assert.deepEqual(list, []);
 	});
 });

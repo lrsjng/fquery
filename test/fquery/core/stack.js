@@ -41,7 +41,7 @@ describe('fQuery.fn.push()', function () {
 		assert.strictEqual(y, z);
 	});
 
-	it('initial stack okay for empty selection', function () {
+	it('initial empty selection', function () {
 
 		var x = fQuery();
 		assert.deepEqual(x._stack, [[]]);
@@ -49,7 +49,7 @@ describe('fQuery.fn.push()', function () {
 		assert.strictEqual(x.length, 0);
 	});
 
-	it('stack okay for empty push', function () {
+	it('empty push', function () {
 
 		var x = fQuery().push();
 		assert.deepEqual(x._stack, [[], []]);
@@ -57,7 +57,7 @@ describe('fQuery.fn.push()', function () {
 		assert.strictEqual(x.length, 0);
 	});
 
-	it('stack okay for multi empty push', function () {
+	it('multi empty push', function () {
 
 		var x = fQuery().push().push();
 		assert.deepEqual(x._stack, [[], [], []]);
@@ -65,7 +65,7 @@ describe('fQuery.fn.push()', function () {
 		assert.strictEqual(x.length, 0);
 	});
 
-	it('stack okay for non blob value push', function () {
+	it('non blob value push', function () {
 
 		var v = {};
 		var x = fQuery().push(v);
@@ -74,7 +74,7 @@ describe('fQuery.fn.push()', function () {
 		assert.strictEqual(x.length, 0);
 	});
 
-	it('stack okay for non blobs array push', function () {
+	it('non blobs array push', function () {
 
 		var v = [{}, 1, true, null, undefined, 'text'];
 		var x = fQuery().push(v);
@@ -83,7 +83,7 @@ describe('fQuery.fn.push()', function () {
 		assert.strictEqual(x.length, 0);
 	});
 
-	it('stack okay for blob value push', function () {
+	it('blob value push', function () {
 
 		var b = fQuery.Blob.select('test/assets/files-abc/a');
 		var x = fQuery().push(b);
@@ -92,7 +92,7 @@ describe('fQuery.fn.push()', function () {
 		assert.strictEqual(x.length, 1);
 	});
 
-	it('stack okay for blob array push', function () {
+	it('blob array push', function () {
 
 		var b1 = fQuery.Blob.select('test/assets/files-abc/a');
 		var b2 = fQuery.Blob.select('test/assets/files-abc/b');
@@ -103,7 +103,7 @@ describe('fQuery.fn.push()', function () {
 		assert.strictEqual(x.length, 3);
 	});
 
-	it('stack okay for mixed array push', function () {
+	it('mixed array push', function () {
 
 		var b1 = fQuery.Blob.select('test/assets/files-abc/a');
 		var b2 = fQuery.Blob.select('test/assets/files-abc/b');
@@ -114,7 +114,7 @@ describe('fQuery.fn.push()', function () {
 		assert.strictEqual(x.length, 3);
 	});
 
-	it('stack okay for multi blob array push', function () {
+	it('multi blob array push', function () {
 
 		var b1 = fQuery.Blob.select('test/assets/files-abc/a');
 		var b2 = fQuery.Blob.select('test/assets/files-abc/b');
@@ -156,7 +156,7 @@ describe('fQuery.fn.pop()', function () {
 		assert.strictEqual(y, z);
 	});
 
-	it('stack okay for pop', function () {
+	it('pop', function () {
 
 		var x = fQuery().pop();
 		assert.deepEqual(x._stack, [[]]);
@@ -164,7 +164,7 @@ describe('fQuery.fn.pop()', function () {
 		assert.strictEqual(x.length, 0);
 	});
 
-	it('stack okay for multi pop 1', function () {
+	it('multi pop 1', function () {
 
 		var x = fQuery().pop().pop();
 		assert.deepEqual(x._stack, [[]]);
@@ -172,7 +172,7 @@ describe('fQuery.fn.pop()', function () {
 		assert.strictEqual(x.length, 0);
 	});
 
-	it('stack okay for multi pop 2', function () {
+	it('multi pop 2', function () {
 
 		var x = fQuery().pop().pop().pop();
 		assert.deepEqual(x._stack, [[]]);
@@ -180,7 +180,7 @@ describe('fQuery.fn.pop()', function () {
 		assert.strictEqual(x.length, 0);
 	});
 
-	it('stack okay for multi pop 3', function () {
+	it('multi pop 3', function () {
 
 		var b1 = fQuery.Blob.select('test/assets/files-abc/a');
 		var b2 = fQuery.Blob.select('test/assets/files-abc/b');
