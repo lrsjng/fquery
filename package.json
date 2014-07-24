@@ -20,7 +20,6 @@
   "dependencies": {
     "chalk": "~0.5.1",
     "clean-css": "~2.2.7",
-    "commander": "~2.2.0",
     "escape-string-regexp": "~1.0.1",
     "glob": "~4.0.3",
     "gzip-js": "~0.3.2",
@@ -33,7 +32,6 @@
     "mustache": "~0.8.2",
     "q": "~1.0.1",
     "rimraf": "~2.2.8",
-    "semver": "~2.3.1",
     "uglify-js": "~2.4.15",
     "underscore": "~1.6.0"
   },
