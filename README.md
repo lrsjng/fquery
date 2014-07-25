@@ -5,6 +5,16 @@ To report a bug or make a feature request please create [a new issue](https://gi
 References: [web](http://larsjung.de/fquery/), [GitHub](https://github.com/lrsjng/fquery), [npm](https://www.npmjs.org/package/fquery)
 
 
+## Method Naming Conventions
+
+* getters start with `get` and return a value (`getSomething`)
+* getters start with `is` if they return a boolean value (`isSomething`)
+* sync operations return `this` (`doSomething`)
+* async operations start with `async` and return a `promise` (`doSomething` -> `asyncDoSomething`)
+* queued operations start with `then` and return `this` (`doSomething` -> `thenDoSomething`)
+* some environment enforced method names might differ from these conventions (`toString`, `inspect`, ...)
+
+
 ## License
 The MIT License (MIT)
 
