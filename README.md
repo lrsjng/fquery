@@ -10,8 +10,8 @@ References: [web](http://larsjung.de/fquery/), [GitHub](https://github.com/lrsjn
 * getters start with `get` and return a value (`getSomething`)
 * getters start with `is` if they return a boolean value (`isSomething`)
 * sync operations return `this` (`doSomething`)
-* async operations start with `async` and return a `promise` (`doSomething` -> `asyncDoSomething`)
-* queued operations start with `then` and return `this` (`doSomething` -> `thenDoSomething`)
+* async operations start with `async` and return a `promise` (`asyncDoSomething`)
+* queued operations start with `then` and return `this` (`thenDoSomething`)
 * some environment enforced method names might differ from these conventions (`toString`, `inspect`, ...)
 
 
