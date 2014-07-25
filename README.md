@@ -34,7 +34,8 @@ THE SOFTWARE.
 
 ### develop branch
 
-* ...
+* complete refactoring, not compatible with previous releases
+* removes command line tools; makejs is replaced with [mkr](https://github.com/lrsjng/mkr), wepp is gone
 
 
 ### v0.11.0 - *2013-08-16*
