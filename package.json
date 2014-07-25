@@ -4,49 +4,38 @@
   "version": "0.11.0",
   "devbuild": true,
   "description": "file selection and processing for node",
-  "url": "http://larsjung.de/fquery/",
-  "keywords": [
-    "file",
-    "tool",
-    "preprocessor",
-    "less",
-    "css",
-    "lesscss",
-    "js",
-    "javascript"
-  ],
-  "author": "Lars Jung <lrsjng@gmail.com>",
+  "homepage": "http://larsjung.de/fquery/",
+  "bugs": "https://github.com/lrsjng/fQuery/issues",
+  "author": "Lars Jung <lrsjng@gmail.com> (http://larsjung.de)",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/lrsjng/fQuery.git"
   },
   "main": "./lib/fQuery",
-  "bin": {
-    "makejs": "./bin/makejs",
-    "wepp": "./bin/wepp"
+  "scripts": {
+    "test": "mocha --recursive -R dot test",
+    "test-spec": "mocha --recursive -R spec test"
   },
   "dependencies": {
-    "async": "~0.9.0",
-    "clean-css": "~2.2.7",
-    "commander": "~2.2.0",
-    "docco": "~0.6.3",
+    "chalk": "~0.5.1",
+    "escape-string-regexp": "~1.0.1",
     "glob": "~4.0.3",
-    "gzip-js": "~0.3.2",
+    "mkdirp": "~0.5.0",
+    "moment": "~2.7.0",
+    "q": "~1.0.1",
+    "rimraf": "~2.2.8",
+    "underscore": "~1.6.0",
+
+    "clean-css": "~2.2.7",
     "handlebars": "~2.0.0-alpha",
     "jade": "~1.3.1",
     "jshint": "~2.5.2",
     "less": "~1.7.3",
-    "mkdirp": "~0.5.0",
-    "moment": "~2.7.0",
     "mustache": "~0.8.2",
-    "q": "~1.0.1",
-    "rimraf": "~2.2.8",
-    "semver": "~2.3.1",
-    "uglify-js": "~2.4.15",
-    "underscore": "~1.6.0"
+    "uglify-js": "~2.4.15"
   },
   "engines": {
-    "node": ">=0.8"
+    "node": ">=0.10"
   }
 }
