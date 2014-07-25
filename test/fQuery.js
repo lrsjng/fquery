@@ -5,10 +5,10 @@
 var assert = require('assert'),
 	_ = require('underscore'),
 
-	fQuery = require('../../lib/fquery/fQuery'),
-	Blob = require('../../lib/fquery/Blob'),
-	Event = require('../../lib/fquery/Event'),
-	Selector = require('../../lib/fquery/Selector');
+	fQuery = require('../lib/fQuery'),
+	Blob = require('../lib/Blob'),
+	Event = require('../lib/Event'),
+	Selector = require('../lib/Selector');
 
 
 describe('fQuery (factory)', function () {

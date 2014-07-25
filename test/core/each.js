@@ -6,7 +6,7 @@ var assert = require('assert'),
 	_ = require('underscore'),
 	q = require('q'),
 
-	fQuery = require('../../../lib/fquery/fQuery');
+	fQuery = require('../../lib/fQuery');
 
 
 describe('fQuery.fn.asyncEach()', function () {

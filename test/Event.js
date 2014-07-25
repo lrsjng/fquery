@@ -5,7 +5,7 @@
 var assert = require('assert'),
 	_ = require('underscore'),
 
-	Event = require('../../lib/fquery/Event'),
+	Event = require('../lib/Event'),
 
 	mockWrite = function (fn) {
 

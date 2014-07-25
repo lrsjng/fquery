@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/lrsjng/fQuery.git"
   },
-  "main": "./lib/fquery/fQuery",
+  "main": "./lib/fQuery",
   "scripts": {
     "test": "mocha --recursive -R dot test",
     "test-spec": "mocha --recursive -R spec test"

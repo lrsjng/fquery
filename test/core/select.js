@@ -11,7 +11,7 @@ var assert = require('assert'),
 		return Array.prototype.slice.call(obj);
 	},
 
-	fQuery = require('../../../lib/fquery/fQuery');
+	fQuery = require('../../lib/fQuery');
 
 
 describe('fQuery.fn.select()', function () {
