@@ -3,7 +3,7 @@
 [![Version](http://img.shields.io/npm/v/fquery.svg?style=flat)](https://www.npmjs.org/package/fquery)
 [![Downloads](http://img.shields.io/npm/dm/fquery.svg?style=flat)](https://www.npmjs.org/package/fquery)
 [![License](http://img.shields.io/npm/l/fquery.svg?style=flat)](https://www.npmjs.org/package/fquery)
-[![Dependencies Status](http://img.shields.io/david/lrsjng/fquery.svg?style=flat)](https://www.npmjs.org/package/fquery)
+[![Dependencies Status](http://img.shields.io/david/lrsjng/fquery.svg?style=flat)](https://david-dm.org/lrsjng/fquery)
 
 File selection and processing for Node.js.
 To report a bug or make a feature request please create [a new issue](https://github.com/lrsjng/fquery/issues/new).
