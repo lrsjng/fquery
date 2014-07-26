@@ -1,8 +1,7 @@
 {
   "name": "fquery",
   "displayName": "fQuery",
-  "version": "0.11.0",
-  "devbuild": true,
+  "version": "0.12.0",
   "description": "file selection and processing for node",
   "homepage": "http://larsjung.de/fquery/",
   "bugs": "https://github.com/lrsjng/fQuery/issues",
@@ -14,8 +13,7 @@
   },
   "main": "./lib/fQuery",
   "scripts": {
-    "test": "mocha --recursive -R dot test",
-    "test-spec": "mocha --recursive -R spec test"
+    "test": "node_modules/.bin/mocha --recursive test"
   },
   "dependencies": {
     "chalk": "~0.5.1",
@@ -34,6 +32,9 @@
     "less": "~1.7.3",
     "mustache": "~0.8.2",
     "uglify-js": "~2.4.15"
+  },
+  "devDependencies": {
+    "mocha": "~1.21.0"
   },
   "engines": {
     "node": ">=0.10"
