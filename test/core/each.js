@@ -55,9 +55,9 @@ describe('fQuery.fn.asyncEach()', function () {
 
 	it('iterates correctly 2', function () {
 
-		var b1 = fQuery.Blob.select('test/assets/files-abc/a');
-		var b2 = fQuery.Blob.select('test/assets/files-abc/b');
-		var b3 = fQuery.Blob.select('test/assets/files-abc/c');
+		var b1 = fQuery.Blob.fromPath('test/assets/files-abc/a');
+		var b2 = fQuery.Blob.fromPath('test/assets/files-abc/b');
+		var b3 = fQuery.Blob.fromPath('test/assets/files-abc/c');
 		var x = fQuery([b1, b2, b3]);
 		var list = [];
 		var expected = [
@@ -83,9 +83,9 @@ describe('fQuery.fn.asyncEach()', function () {
 
 	it('iterates correctly 3', function (done) {
 
-		var b1 = fQuery.Blob.select('test/assets/files-abc/a');
-		var b2 = fQuery.Blob.select('test/assets/files-abc/b');
-		var b3 = fQuery.Blob.select('test/assets/files-abc/c');
+		var b1 = fQuery.Blob.fromPath('test/assets/files-abc/a');
+		var b2 = fQuery.Blob.fromPath('test/assets/files-abc/b');
+		var b3 = fQuery.Blob.fromPath('test/assets/files-abc/c');
 		var x = fQuery([b1, b2, b3]);
 		var list = [];
 		var expected = [

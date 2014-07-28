@@ -86,7 +86,7 @@ describe('fQuery.fn.select()', function () {
 
 	it('blob select', function () {
 
-		var b = fQuery.Blob.select('test/assets/files-abc/a');
+		var b = fQuery.Blob.fromPath('test/assets/files-abc/a');
 		var x = fQuery().select(b);
 		assert.deepEqual(x._stack, [[b], []]);
 		assert.deepEqual(slice(x), [b]);
@@ -95,9 +95,9 @@ describe('fQuery.fn.select()', function () {
 
 	it('blob array select', function () {
 
-		var b1 = fQuery.Blob.select('test/assets/files-abc/a');
-		var b2 = fQuery.Blob.select('test/assets/files-abc/b');
-		var b3 = fQuery.Blob.select('test/assets/files-abc/c');
+		var b1 = fQuery.Blob.fromPath('test/assets/files-abc/a');
+		var b2 = fQuery.Blob.fromPath('test/assets/files-abc/b');
+		var b3 = fQuery.Blob.fromPath('test/assets/files-abc/c');
 		var x = fQuery().select([b1, b2, b3]);
 		assert.deepEqual(x._stack, [[b1, b2, b3], []]);
 		assert.deepEqual(slice(x), [b1, b2, b3]);
@@ -106,9 +106,9 @@ describe('fQuery.fn.select()', function () {
 
 	it('mixed array select', function () {
 
-		var b1 = fQuery.Blob.select('test/assets/files-abc/a');
-		var b2 = fQuery.Blob.select('test/assets/files-abc/b');
-		var b3 = fQuery.Blob.select('test/assets/files-abc/c');
+		var b1 = fQuery.Blob.fromPath('test/assets/files-abc/a');
+		var b2 = fQuery.Blob.fromPath('test/assets/files-abc/b');
+		var b3 = fQuery.Blob.fromPath('test/assets/files-abc/c');
 		var x = fQuery().select([b1, 1, b2, true, b3, null]);
 		assert.deepEqual(x._stack, [[b1, b2, b3], []]);
 		assert.deepEqual(slice(x), [b1, b2, b3]);
@@ -117,9 +117,9 @@ describe('fQuery.fn.select()', function () {
 
 	it('multi blob array select', function () {
 
-		var b1 = fQuery.Blob.select('test/assets/files-abc/a');
-		var b2 = fQuery.Blob.select('test/assets/files-abc/b');
-		var b3 = fQuery.Blob.select('test/assets/files-abc/c');
+		var b1 = fQuery.Blob.fromPath('test/assets/files-abc/a');
+		var b2 = fQuery.Blob.fromPath('test/assets/files-abc/b');
+		var b3 = fQuery.Blob.fromPath('test/assets/files-abc/c');
 		var x = fQuery().select([b1, b2, b3]).select([b1]).select(b3);
 		assert.deepEqual(x._stack, [[b3], [b1], [b1, b2, b3], []]);
 		assert.deepEqual(slice(x), [b3]);
