@@ -2,7 +2,7 @@
 
 [![web](http://img.shields.io/badge/web-larsjung.de/fquery-a0a060.svg?style=flat)](http://larsjung.de/fquery/)
 [![GitHub](http://img.shields.io/badge/GitHub-lrsjng/fquery-a0a060.svg?style=flat)](https://github.com/lrsjng/fquery)
-[![web](http://img.shields.io/badge/npm-fquery-a0a060.svg?style=flat)](https://www.npmjs.org/package/fquery)
+[![npm](http://img.shields.io/badge/npm-fquery-a0a060.svg?style=flat)](https://www.npmjs.org/package/fquery)
 <br>
 [![Version](http://img.shields.io/npm/v/fquery.svg?style=flat)](https://www.npmjs.org/package/fquery)
 [![Downloads](http://img.shields.io/npm/dm/fquery.svg?style=flat)](https://www.npmjs.org/package/fquery)
@@ -14,9 +14,6 @@ File selection and processing for Node.js.
 To report a bug or make a feature request please create [a new issue](https://github.com/lrsjng/fquery/issues/new).
 
 **currently under heavy development, rapid changes, incompatible to previous releases**
-
-<!-- References: [web](http://larsjung.de/fquery/), [GitHub](https://github.com/lrsjng/fquery), [npm](https://www.npmjs.org/package/fquery) -->
-<!-- References: -->
 
 
 ## Method Naming Conventions
