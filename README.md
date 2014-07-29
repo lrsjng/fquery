@@ -3,7 +3,7 @@
 [![web](http://img.shields.io/badge/web-larsjung.de/fquery-a0a060.svg?style=flat)](http://larsjung.de/fquery/)
 [![GitHub](http://img.shields.io/badge/GitHub-lrsjng/fquery-a0a060.svg?style=flat)](https://github.com/lrsjng/fquery)
 [![web](http://img.shields.io/badge/npm-fquery-a0a060.svg?style=flat)](https://www.npmjs.org/package/fquery)
-
+<br>
 [![Version](http://img.shields.io/npm/v/fquery.svg?style=flat)](https://www.npmjs.org/package/fquery)
 [![Downloads](http://img.shields.io/npm/dm/fquery.svg?style=flat)](https://www.npmjs.org/package/fquery)
 [![License](http://img.shields.io/npm/l/fquery.svg?style=flat)](https://www.npmjs.org/package/fquery)
