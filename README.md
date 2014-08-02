@@ -6,7 +6,7 @@
 [![Dependencies Status][david-img]][david-url] [![Build Status][travis-img]][travis-url]
 
 File selection and processing for Node.js.
-To report a bug or make a feature request please create [a new issue][github-ni-url].
+To report a bug or make a feature request please create [a new issue][github-issue-url].
 
 **currently under heavy development, rapid changes, incompatible to previous releases**
 
@@ -50,7 +50,7 @@ THE SOFTWARE.
 [npm-url]: https://www.npmjs.org/package/fquery
 [david-url]: https://david-dm.org/lrsjng/fquery
 [travis-url]: https://travis-ci.org/lrsjng/fquery
-[github-ni-url]: https://github.com/lrsjng/fquery/issues/new
+[github-issue-url]: https://github.com/lrsjng/fquery/issues/new
 
 [web-img]: http://img.shields.io/badge/web-larsjung.de/fquery-a0a060.svg?style=flat
 [github-img]: http://img.shields.io/badge/GitHub-lrsjng/fquery-a0a060.svg?style=flat
