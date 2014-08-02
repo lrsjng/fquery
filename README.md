@@ -1,14 +1,9 @@
 # fQuery
 
-[![web](http://img.shields.io/badge/web-larsjung.de/fquery-a0a060.svg?style=flat)](http://larsjung.de/fquery/)
-[![GitHub](http://img.shields.io/badge/GitHub-lrsjng/fquery-a0a060.svg?style=flat)](https://github.com/lrsjng/fquery)
-[![npm](http://img.shields.io/badge/npm-fquery-a0a060.svg?style=flat)](https://www.npmjs.org/package/fquery)
+[![web][web-img]][web-url] [![GitHub][github-img]][github-url] [![npm][npm-img]][npm-url]
 <br>
-[![Version](http://img.shields.io/npm/v/fquery.svg?style=flat)](https://www.npmjs.org/package/fquery)
-[![Downloads](http://img.shields.io/npm/dm/fquery.svg?style=flat)](https://www.npmjs.org/package/fquery)
-[![License](http://img.shields.io/npm/l/fquery.svg?style=flat)](https://www.npmjs.org/package/fquery)
-[![Dependencies Status](http://img.shields.io/david/lrsjng/fquery.svg?style=flat)](https://david-dm.org/lrsjng/fquery)
-[![Build Status](http://img.shields.io/travis/lrsjng/fquery.svg?style=flat)](https://travis-ci.org/lrsjng/fquery)
+[![Version][npm-v-img]][npm-url] [![Downloads][npm-dm-img]][npm-url] [![License][npm-l-img]][npm-url]
+[![Dependencies Status][david-img]][david-url] [![Build Status][travis-img]][travis-url]
 
 File selection and processing for Node.js.
 To report a bug or make a feature request please create [a new issue](https://github.com/lrsjng/fquery/issues/new).
@@ -48,3 +43,20 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+
+[web-url]: http://larsjung.de/fquery/
+[github-url]: https://github.com/lrsjng/fquery
+[npm-url]: https://www.npmjs.org/package/fquery
+[david-url]: https://david-dm.org/lrsjng/fquery
+[travis-url]: https://travis-ci.org/lrsjng/fquery
+
+[web-img]: http://img.shields.io/badge/web-larsjung.de/fquery-a0a060.svg?style=flat
+[github-img]: http://img.shields.io/badge/GitHub-lrsjng/fquery-a0a060.svg?style=flat
+[npm-img]: http://img.shields.io/badge/npm-fquery-a0a060.svg?style=flat
+
+[npm-v-img]: http://img.shields.io/npm/v/fquery.svg?style=flat
+[npm-dm-img]: http://img.shields.io/npm/dm/fquery.svg?style=flat
+[npm-l-img]: http://img.shields.io/npm/l/fquery.svg?style=flat
+[david-img]: http://img.shields.io/david/lrsjng/fquery.svg?style=flat
+[travis-img]: http://img.shields.io/travis/lrsjng/fquery.svg?style=flat
