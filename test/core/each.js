@@ -3,7 +3,7 @@
 
 
 var assert = require('assert'),
-	_ = require('underscore'),
+	_ = require('lodash'),
 	q = require('q'),
 
 	fQuery = require('../../lib/fQuery');

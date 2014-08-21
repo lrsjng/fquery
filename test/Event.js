@@ -3,7 +3,7 @@
 
 
 var assert = require('assert'),
-	_ = require('underscore'),
+	_ = require('lodash'),
 
 	Event = require('../lib/Event'),
 
