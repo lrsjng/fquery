@@ -6,9 +6,9 @@ var assert = require('assert'),
     _ = require('lodash'),
 
     fQuery = require('../lib/fQuery'),
-    Blob = require('../lib/Blob'),
+    Blob = require('../lib/selector/Blob'),
     Event = require('../lib/Event'),
-    Selector = require('../lib/Selector');
+    Selector = require('../lib/selector/Selector');
 
 
 describe('fQuery (factory)', function () {

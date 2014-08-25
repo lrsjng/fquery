@@ -163,8 +163,7 @@ describe('fQuery.fn.select()', function () {
         assert.throws(
             function () {
                 fQuery().select('test/assets/files-abc: a, test: b');
-            },
-            fQuery.Event
+            }
         );
     });
 
