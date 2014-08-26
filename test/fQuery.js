@@ -2,13 +2,10 @@
 /*global describe, before, beforeEach, it */
 
 
-var assert = require('assert'),
-    _ = require('lodash'),
+var _ = require('lodash');
+var assert = require('assert');
 
-    fQuery = require('../lib/fQuery'),
-    Blob = require('../lib/selector/Blob'),
-    Event = require('../lib/Event'),
-    Selector = require('../lib/selector/Selector');
+var fQuery = require('../lib/fQuery');
 
 
 describe('fQuery (factory)', function () {
@@ -28,16 +25,16 @@ describe('fQuery (factory)', function () {
 
         it('is Blob', function () {
 
-            assert.strictEqual(fQuery.Blob, Blob);
+            assert.strictEqual(fQuery.Blob, require('../lib/util/Blob'));
         });
     });
 
 
     describe('.Event', function () {
 
-        it('is Event', function () {
+        it('is Object', function () {
 
-            assert.strictEqual(fQuery.Event, Event);
+            assert.ok(_.isObject(fQuery.Event));
         });
     });
 
@@ -46,7 +43,7 @@ describe('fQuery (factory)', function () {
 
         it('is Selector', function () {
 
-            assert.strictEqual(fQuery.Selector, Selector);
+            assert.strictEqual(fQuery.Selector, require('../lib/util/Selector'));
         });
     });
 

@@ -2,11 +2,11 @@
 /*global describe, before, beforeEach, it */
 
 
-var assert = require('assert'),
-    _ = require('lodash'),
-    q = require('q'),
+var _ = require('lodash');
+var assert = require('assert');
+var q = require('q');
 
-    fQuery = require('../../lib/fQuery');
+var fQuery = require('../../lib/fQuery');
 
 
 describe('fQuery.fn.asyncEach()', function () {

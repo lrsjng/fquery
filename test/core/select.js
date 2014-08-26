@@ -2,16 +2,16 @@
 /*global describe, before, beforeEach, it */
 
 
-var assert = require('assert'),
-    _ = require('lodash'),
-    path = require('path'),
+var _ = require('lodash');
+var assert = require('assert');
+var path = require('path');
 
-    slice = function (obj) {
+var slice = function (obj) {
 
         return Array.prototype.slice.call(obj);
-    },
+    };
 
-    fQuery = require('../../lib/fQuery');
+var fQuery = require('../../lib/fQuery');
 
 
 describe('fQuery.fn.select()', function () {

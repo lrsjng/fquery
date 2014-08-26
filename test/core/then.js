@@ -2,10 +2,10 @@
 /*global describe, before, beforeEach, it */
 
 
-var assert = require('assert'),
-    _ = require('lodash'),
+var _ = require('lodash');
+var assert = require('assert');
 
-    fQuery = require('../../lib/fQuery');
+var fQuery = require('../../lib/fQuery');
 
 
 describe('fQuery.fn.then()', function () {
