@@ -1,7 +1,7 @@
 # fQuery
 
 [![license][license-img]][github] [![web][web-img]][web] [![github][github-img]][github] [![npm][npm-img]][npm]  
-[![version][npm-v-img]][npm] [![downloads][npm-dm-img]][npm] [![dependencies status][david-img]][david] [![build status][travis-img]][travis]
+[![version][npm-v-img]][npm] [![downloads][npm-dm-img]][npm] [![dependencies status][gemnasium-img]][gemnasium] [![build status][travis-img]][travis]
 
 File selection and processing for Node.js.
 
@@ -45,7 +45,7 @@ THE SOFTWARE.
 [web]: http://larsjung.de/fquery/
 [github]: https://github.com/lrsjng/fquery
 [npm]: https://www.npmjs.org/package/fquery
-[david]: https://david-dm.org/lrsjng/fquery
+[gemnasium]: https://gemnasium.com/lrsjng/fquery
 [travis]: https://travis-ci.org/lrsjng/fquery
 
 [license-img]: http://img.shields.io/badge/license-MIT-a0a060.svg?style=flat-square
@@ -55,5 +55,5 @@ THE SOFTWARE.
 
 [npm-v-img]: http://img.shields.io/npm/v/fquery.svg?style=flat-square
 [npm-dm-img]: http://img.shields.io/npm/dm/fquery.svg?style=flat-square
-[david-img]: http://img.shields.io/david/lrsjng/fquery.svg?style=flat-square
+[gemnasium-img]: http://img.shields.io/gemnasium/lrsjng/fquery.svg?style=flat-square
 [travis-img]: http://img.shields.io/travis/lrsjng/fquery.svg?style=flat-square
