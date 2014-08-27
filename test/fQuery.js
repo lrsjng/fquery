@@ -21,6 +21,24 @@ describe('fQuery (factory)', function () {
     });
 
 
+    describe('._', function () {
+
+        it('is lodash', function () {
+
+            assert.strictEqual(fQuery._, require('lodash'));
+        });
+    });
+
+
+    describe('.Q', function () {
+
+        it('is Q', function () {
+
+            assert.strictEqual(fQuery.Q, require('q'));
+        });
+    });
+
+
     describe('.Blob', function () {
 
         it('is Blob', function () {
