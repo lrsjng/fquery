@@ -1,7 +1,7 @@
 {
   "name": "fquery",
   "displayName": "fQuery",
-  "version": "0.12.17",
+  "version": "0.13.0",
   "description": "file selection and processing for Node.js",
   "homepage": "http://larsjung.de/fquery/",
   "bugs": "https://github.com/lrsjng/fQuery/issues",
