@@ -48,15 +48,6 @@ describe('fQuery (factory)', function () {
     });
 
 
-    describe('.Event', function () {
-
-        it('is Object', function () {
-
-            assert.ok(_.isObject(fQuery.Event));
-        });
-    });
-
-
     describe('.Selector', function () {
 
         it('is Selector', function () {
