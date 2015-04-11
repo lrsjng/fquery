@@ -21,7 +21,7 @@ File selection and processing for Node.js.
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2014 Lars Jung (http://larsjung.de)
+Copyright (c) 2015 Lars Jung (http://larsjung.de)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -48,12 +48,12 @@ THE SOFTWARE.
 [gemnasium]: https://gemnasium.com/lrsjng/fquery
 [travis]: https://travis-ci.org/lrsjng/fquery
 
-[license-img]: http://img.shields.io/badge/license-MIT-a0a060.svg?style=flat-square
-[web-img]: http://img.shields.io/badge/web-larsjung.de/fquery-a0a060.svg?style=flat-square
-[github-img]: http://img.shields.io/badge/github-lrsjng/fquery-a0a060.svg?style=flat-square
-[npm-img]: http://img.shields.io/badge/npm-fquery-a0a060.svg?style=flat-square
+[license-img]: https://img.shields.io/badge/license-MIT-a0a060.svg?style=flat-square
+[web-img]: https://img.shields.io/badge/web-larsjung.de/fquery-a0a060.svg?style=flat-square
+[github-img]: https://img.shields.io/badge/github-lrsjng/fquery-a0a060.svg?style=flat-square
+[npm-img]: https://img.shields.io/badge/npm-fquery-a0a060.svg?style=flat-square
 
-[npm-v-img]: http://img.shields.io/npm/v/fquery.svg?style=flat-square
-[npm-dm-img]: http://img.shields.io/npm/dm/fquery.svg?style=flat-square
-[gemnasium-img]: http://img.shields.io/gemnasium/lrsjng/fquery.svg?style=flat-square
-[travis-img]: http://img.shields.io/travis/lrsjng/fquery.svg?style=flat-square
+[npm-v-img]: https://img.shields.io/npm/v/fquery.svg?style=flat-square
+[npm-dm-img]: https://img.shields.io/npm/dm/fquery.svg?style=flat-square
+[gemnasium-img]: https://img.shields.io/gemnasium/lrsjng/fquery.svg?style=flat-square
+[travis-img]: https://img.shields.io/travis/lrsjng/fquery.svg?style=flat-square
