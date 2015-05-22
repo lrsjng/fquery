@@ -1,6 +1,4 @@
-/*jshint node: true */
-/*global describe, before, beforeEach, it */
-
+'use strict';
 
 var _ = require('lodash');
 var assert = require('assert');
@@ -8,8 +6,8 @@ var path = require('path');
 
 var slice = function (obj) {
 
-        return Array.prototype.slice.call(obj);
-    };
+    return Array.prototype.slice.call(obj);
+};
 
 var fQuery = require('../../lib/fQuery');
 

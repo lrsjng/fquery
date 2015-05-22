@@ -1,7 +1,7 @@
 {
   "name": "fquery",
   "displayName": "fQuery",
-  "version": "0.16.3",
+  "version": "0.16.4",
   "description": "file selection and processing for Node.js",
   "homepage": "http://larsjung.de/fquery/",
   "bugs": "https://github.com/lrsjng/fQuery/issues",
@@ -18,17 +18,18 @@
   "dependencies": {
     "chalk": "~1.0.0",
     "escape-string-regexp": "~1.0.3",
-    "glob": "~5.0.5",
-    "lodash": "~3.6.0",
-    "mkdirp": "~0.5.0",
-    "moment": "~2.10.2",
-    "q": "~1.2.0",
-    "rimraf": "~2.3.2"
+    "glob": "~5.0.7",
+    "lodash": "~3.9.1",
+    "mkdirp": "~0.5.1",
+    "moment": "~2.10.3",
+    "q": "~1.4.1",
+    "rimraf": "~2.3.4"
   },
   "devDependencies": {
-    "mocha": "~2.2.4"
+    "mocha": "~2.2.5"
   },
   "engines": {
-    "node": ">=0.10"
+    "node": ">=0.10",
+    "iojs": ">=1.0.0"
   }
 }

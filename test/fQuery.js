@@ -1,6 +1,4 @@
-/*jshint node: true */
-/*global describe, before, beforeEach, it */
-
+'use strict';
 
 var _ = require('lodash');
 var assert = require('assert');
@@ -20,7 +18,6 @@ describe('fQuery (factory)', function () {
         assert.strictEqual(fQuery.length, 2);
     });
 
-
     describe('._', function () {
 
         it('is lodash', function () {
@@ -28,7 +25,6 @@ describe('fQuery (factory)', function () {
             assert.strictEqual(fQuery._, require('lodash'));
         });
     });
-
 
     describe('.Q', function () {
 
@@ -38,7 +34,6 @@ describe('fQuery (factory)', function () {
         });
     });
 
-
     describe('.Blob', function () {
 
         it('is Blob', function () {
@@ -47,7 +42,6 @@ describe('fQuery (factory)', function () {
         });
     });
 
-
     describe('.Selector', function () {
 
         it('is Selector', function () {
@@ -55,7 +49,6 @@ describe('fQuery (factory)', function () {
             assert.strictEqual(fQuery.Selector, require('../lib/util/Selector'));
         });
     });
-
 
     describe('.fn', function () {
 
@@ -74,7 +67,6 @@ describe('fQuery (factory)', function () {
             assert.strictEqual(fQuery.fn.constructor, fQuery);
         });
     });
-
 
     describe('.plugin', function () {
 

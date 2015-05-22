@@ -1,6 +1,4 @@
-/*jshint node: true */
-/*global describe, before, beforeEach, it */
-
+'use strict';
 
 var _ = require('lodash');
 var assert = require('assert');
@@ -72,9 +70,9 @@ describe('fQuery.fn.isPending()', function () {
         assert.ok(_.isFunction(fQuery.fn.isPending));
     });
 
-    it('expectes 1 parameter', function () {
+    it('expectes no parameters', function () {
 
-        assert.strictEqual(fQuery.fn.isPending.length, 1);
+        assert.strictEqual(fQuery.fn.isPending.length, 0);
     });
 
     it('false for new object', function () {
@@ -96,32 +94,32 @@ describe('fQuery.fn.isPending()', function () {
 
         var x = fQuery().then(function () {
 
-                assert.strictEqual(x.isPending(), true);
-                done();
-            });
+            assert.strictEqual(x.isPending(), true);
+            done();
+        });
     });
 
     it('false after then is done', function (done) {
 
         var x = fQuery().then(function () {
 
-                setTimeout(afterThen, 0);
-            }),
-            afterThen = function () {
+            setTimeout(afterThen, 0);
+        });
+        var afterThen = function () {
 
-                assert.strictEqual(x.isPending(), false);
-                done();
-            };
+            assert.strictEqual(x.isPending(), false);
+            done();
+        };
     });
 
     it('correct in all phases', function (done) {
 
-        var x = fQuery(),
-            afterThen = function () {
+        var x = fQuery();
+        var afterThen = function () {
 
-                assert.strictEqual(x.isPending(), false);
-                done();
-            };
+            assert.strictEqual(x.isPending(), false);
+            done();
+        };
 
         assert.strictEqual(x.isPending(), false);
 

@@ -1,6 +1,4 @@
-/*jshint node: true */
-/*global describe, before, beforeEach, it */
-
+'use strict';
 
 var _ = require('lodash');
 var assert = require('assert');
@@ -40,8 +38,8 @@ describe('fQuery.fn.asyncEach()', function () {
         var list = [];
         var promise = x.asyncEach(function (blob, idx) {
 
-                list.push([blob, idx]);
-            });
+            list.push([blob, idx]);
+        });
 
         assert.deepEqual(list, []);
 
@@ -67,9 +65,9 @@ describe('fQuery.fn.asyncEach()', function () {
         ];
         var promise = x.asyncEach(function (blob, idx) {
 
-                assert.strictEqual(this, x);
-                list.push([blob, idx]);
-            });
+            assert.strictEqual(this, x);
+            list.push([blob, idx]);
+        });
 
         assert.deepEqual(list, expected);
 
@@ -95,13 +93,13 @@ describe('fQuery.fn.asyncEach()', function () {
         ];
         var promise = x.asyncEach(function (blob, idx, d) {
 
-                assert.strictEqual(this, x);
-                setTimeout(function () {
+            assert.strictEqual(this, x);
+            setTimeout(function () {
 
-                    list.push([blob, idx]);
-                    d();
-                }, 0);
-            });
+                list.push([blob, idx]);
+                d();
+            }, 0);
+        });
 
         assert.deepEqual(list, []);
 
