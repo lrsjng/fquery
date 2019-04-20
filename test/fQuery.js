@@ -1,82 +1,64 @@
-'use strict';
+const _ = require('lodash');
+const assert = require('assert');
 
-var _ = require('lodash');
-var assert = require('assert');
+const fQuery = require('../lib/fQuery');
 
-var fQuery = require('../lib/fQuery');
+/* globals describe it */
 
 
-describe('fQuery (factory)', function () {
-
-    it('is function', function () {
-
+describe('fQuery (factory)', () => {
+    it('is function', () => {
         assert.ok(_.isFunction(fQuery));
     });
 
-    it('expectes 2 parameters', function () {
-
+    it('expectes 2 parameters', () => {
         assert.strictEqual(fQuery.length, 2);
     });
 
-    describe('._', function () {
-
-        it('is lodash', function () {
-
+    describe('._', () => {
+        it('is lodash', () => {
             assert.strictEqual(fQuery._, require('lodash'));
         });
     });
 
-    describe('.Q', function () {
-
-        it('is Q', function () {
-
+    describe('.Q', () => {
+        it('is Q', () => {
             assert.strictEqual(fQuery.Q, require('q'));
         });
     });
 
-    describe('.Blob', function () {
-
-        it('is Blob', function () {
-
+    describe('.Blob', () => {
+        it('is Blob', () => {
             assert.strictEqual(fQuery.Blob, require('../lib/util/Blob'));
         });
     });
 
-    describe('.Selector', function () {
-
-        it('is Selector', function () {
-
+    describe('.Selector', () => {
+        it('is Selector', () => {
             assert.strictEqual(fQuery.Selector, require('../lib/util/Selector'));
         });
     });
 
-    describe('.fn', function () {
-
-        it('is object', function () {
-
+    describe('.fn', () => {
+        it('is object', () => {
             assert.ok(_.isObject(fQuery.fn));
         });
 
-        it('is prototype of fQuery', function () {
-
+        it('is prototype of fQuery', () => {
             assert.strictEqual(fQuery.fn, fQuery.prototype);
         });
 
-        it('.constructor is set to fQuery', function () {
-
+        it('.constructor is set to fQuery', () => {
             assert.strictEqual(fQuery.fn.constructor, fQuery);
         });
     });
 
-    describe('.plugin', function () {
-
-        it('is function', function () {
-
+    describe('.plugin', () => {
+        it('is function', () => {
             assert.ok(_.isFunction(fQuery.plugin));
         });
 
-        it('expectes 1 parameter', function () {
-
+        it('expectes 1 parameter', () => {
             assert.strictEqual(fQuery.plugin.length, 1);
         });
     });
