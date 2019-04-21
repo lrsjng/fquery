@@ -1,65 +1,55 @@
 const _ = require('lodash');
-const assert = require('assert');
+const {test, assert} = require('scar');
 
 const fQuery = require('../lib/fQuery');
 
-/* globals describe it */
-
-
-describe('fQuery (factory)', () => {
-    it('is function', () => {
-        assert.ok(_.isFunction(fQuery));
-    });
-
-    it('expectes 2 parameters', () => {
-        assert.strictEqual(fQuery.length, 2);
-    });
-
-    describe('._', () => {
-        it('is lodash', () => {
-            assert.strictEqual(fQuery._, require('lodash'));
-        });
-    });
-
-    describe('.Q', () => {
-        it('is Q', () => {
-            assert.strictEqual(fQuery.Q, require('q'));
-        });
-    });
-
-    describe('.Blob', () => {
-        it('is Blob', () => {
-            assert.strictEqual(fQuery.Blob, require('../lib/util/Blob'));
-        });
-    });
-
-    describe('.Selector', () => {
-        it('is Selector', () => {
-            assert.strictEqual(fQuery.Selector, require('../lib/util/Selector'));
-        });
-    });
-
-    describe('.fn', () => {
-        it('is object', () => {
-            assert.ok(_.isObject(fQuery.fn));
-        });
-
-        it('is prototype of fQuery', () => {
-            assert.strictEqual(fQuery.fn, fQuery.prototype);
-        });
-
-        it('.constructor is set to fQuery', () => {
-            assert.strictEqual(fQuery.fn.constructor, fQuery);
-        });
-    });
-
-    describe('.plugin', () => {
-        it('is function', () => {
-            assert.ok(_.isFunction(fQuery.plugin));
-        });
-
-        it('expectes 1 parameter', () => {
-            assert.strictEqual(fQuery.plugin.length, 1);
-        });
-    });
+test('fQuery is function', () => {
+    assert.ok(_.isFunction(fQuery));
 });
+
+test('fQuery expectes 2 parameters', () => {
+    assert.equal(fQuery.length, 2);
+});
+
+test('fQuery._ is lodash', () => {
+    assert.equal(fQuery._, require('lodash'));
+});
+
+test('fQuery.Q is Q', () => {
+    assert.equal(fQuery.Q, require('q'));
+});
+
+test('fQuery.Blob is Blob', () => {
+    assert.equal(fQuery.Blob, require('../lib/util/Blob'));
+});
+
+test('fQuery.Selector is Selector', () => {
+    assert.equal(fQuery.Selector, require('../lib/util/Selector'));
+});
+
+test('fQuery.fn is object', () => {
+    assert.ok(_.isObject(fQuery.fn));
+});
+
+test('fQuery.fn is prototype of fQuery', () => {
+    assert.equal(fQuery.fn, fQuery.prototype);
+});
+
+test('fQuery.fn.constructor is set to fQuery', () => {
+    assert.equal(fQuery.fn.constructor, fQuery);
+});
+
+test('fQuery.plugin is function', () => {
+    assert.ok(_.isFunction(fQuery.plugin));
+});
+
+test('fQuery.plugin expectes 1 parameter', () => {
+    assert.equal(fQuery.plugin.length, 1);
+});
+
+require('./core/each');
+require('./core/select');
+require('./core/stack');
+require('./core/then');
+
+test.cli();
