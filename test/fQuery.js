@@ -46,10 +46,3 @@ test('fQuery.plugin is function', () => {
 test('fQuery.plugin expectes 1 parameter', () => {
     assert.equal(fQuery.plugin.length, 1);
 });
-
-require('./core/each');
-require('./core/select');
-require('./core/stack');
-require('./core/then');
-
-test.cli();
