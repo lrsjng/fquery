@@ -13,7 +13,9 @@
   },
   "main": "./lib/fQuery",
   "scripts": {
-    "test": "node test"
+    "lint": "eslint .",
+    "test": "node test",
+    "precommit": "npm run -s lint && npm run -s test"
   },
   "dependencies": {
     "chalk": "2.4.2",
