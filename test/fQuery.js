@@ -15,10 +15,6 @@ test('fQuery._ is lodash', () => {
     assert.equal(fQuery._, require('lodash'));
 });
 
-test('fQuery.Q is Q', () => {
-    assert.equal(fQuery.Q, require('q'));
-});
-
 test('fQuery.Blob is Blob', () => {
     assert.equal(fQuery.Blob, require('../lib/util/Blob'));
 });

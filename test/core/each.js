@@ -1,5 +1,4 @@
 const _ = require('lodash');
-const q = require('q');
 const {test, assert} = require('scar');
 
 const fQuery = require('../../lib/fQuery');
@@ -18,9 +17,11 @@ test('fQuery.fn.asyncEach() works with no parameter', () => {
     fQuery().asyncEach(null);
 });
 
-test('fQuery.fn.asyncEach() returns a Q promise', () => {
+test('fQuery.fn.asyncEach() returns a promise', () => {
     const p = fQuery().asyncEach();
-    assert.ok(q.isPromise(p));
+    assert.ok(typeof p.then === 'function');
+    assert.ok(typeof p.catch === 'function');
+    assert.ok(typeof p.finally === 'function');
 });
 
 test('fQuery.fn.asyncEach() iterates correctly 1', () => {
