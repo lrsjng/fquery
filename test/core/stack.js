@@ -1,4 +1,3 @@
-const _ = require('lodash');
 const {test, assert} = require('scar');
 
 const slice = obj => {
@@ -9,7 +8,7 @@ const fQuery = require('../../lib/fQuery');
 
 
 test('fQuery.fn.push() is function', () => {
-    assert.ok(_.isFunction(fQuery.fn.push));
+    assert.equal(typeof fQuery.fn.push, 'function');
 });
 
 test('fQuery.fn.push() expectes 1 parameter', () => {
@@ -107,7 +106,7 @@ test('fQuery.fn.push() multi blob array push', () => {
 
 
 test('fQuery.fn.pop() is function', () => {
-    assert.ok(_.isFunction(fQuery.fn.pop));
+    assert.equal(typeof fQuery.fn.pop, 'function');
 });
 
 test('fQuery.fn.pop() expectes 0 parameters', () => {
@@ -178,7 +177,7 @@ test('fQuery.fn.pop() multi pop 3', () => {
 
 
 test('fQuery.fn.get() is function', () => {
-    assert.ok(_.isFunction(fQuery.fn.get));
+    assert.equal(typeof fQuery.fn.get, 'function');
 });
 
 test('fQuery.fn.get() expectes 1 parameter', () => {
@@ -225,7 +224,7 @@ test('fQuery.fn.get() returns undefined if non int numeric parameter', () => {
 
 
 test('fQuery.fn.each() is function', () => {
-    assert.ok(_.isFunction(fQuery.fn.each));
+    assert.equal(typeof fQuery.fn.each, 'function');
 });
 
 test('fQuery.fn.each() expectes 1 parameter', () => {
@@ -297,7 +296,7 @@ test('fQuery.fn.each() iterates correctly 3', () => {
 
 
 test('fQuery.fn.map() is function', () => {
-    assert.ok(_.isFunction(fQuery.fn.map));
+    assert.equal(typeof fQuery.fn.map, 'function');
 });
 
 test('fQuery.fn.map() expectes 1 parameter', () => {
@@ -312,9 +311,9 @@ test('fQuery.fn.map() works with no parameter', () => {
 
 test('fQuery.fn.map() returns array', () => {
     const x = fQuery();
-    assert.ok(_.isArray(x.map()));
-    assert.ok(_.isArray(x.map(undefined)));
-    assert.ok(_.isArray(x.map(null)));
+    assert.ok(Array.isArray(x.map()));
+    assert.ok(Array.isArray(x.map(undefined)));
+    assert.ok(Array.isArray(x.map(null)));
 });
 
 test('fQuery.fn.map() iterates correctly 1', () => {

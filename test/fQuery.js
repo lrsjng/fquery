@@ -1,10 +1,9 @@
-const _ = require('lodash');
 const {test, assert} = require('scar');
 
 const fQuery = require('../lib/fQuery');
 
 test('fQuery is function', () => {
-    assert.ok(_.isFunction(fQuery));
+    assert.equal(typeof fQuery, 'function');
 });
 
 test('fQuery() instance of fQuery', () => {
@@ -13,10 +12,6 @@ test('fQuery() instance of fQuery', () => {
 
 test('fQuery expectes 2 parameters', () => {
     assert.equal(fQuery.length, 2);
-});
-
-test('fQuery._ is lodash', () => {
-    assert.equal(fQuery._, require('lodash'));
 });
 
 test('fQuery.Blob is Blob', () => {
@@ -28,7 +23,7 @@ test('fQuery.Selector is Selector', () => {
 });
 
 test('fQuery.fn is object', () => {
-    assert.ok(_.isObject(fQuery.fn));
+    assert.equal(typeof fQuery.fn, 'object');
 });
 
 test('fQuery.fn is prototype of fQuery', () => {
@@ -40,7 +35,7 @@ test('fQuery.fn.constructor is set to fQuery', () => {
 });
 
 test('fQuery.plugin is function', () => {
-    assert.ok(_.isFunction(fQuery.plugin));
+    assert.equal(typeof fQuery.plugin, 'function');
 });
 
 test('fQuery.plugin expectes 1 parameter', () => {

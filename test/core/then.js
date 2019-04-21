@@ -1,10 +1,9 @@
-const _ = require('lodash');
 const {test, assert} = require('scar');
 
 const fQuery = require('../../lib/fQuery');
 
 test('fQuery.fn.then() is function', () => {
-    assert.ok(_.isFunction(fQuery.fn.then));
+    assert.equal(typeof fQuery.fn.then, 'function');
 });
 
 test('fQuery.fn.then() expectes 1 parameter', () => {
@@ -49,7 +48,7 @@ test('fQuery.fn.then() then calls are in order', () => {
 
 
 test('fQuery.fn.isPending() is function', () => {
-    assert.ok(_.isFunction(fQuery.fn.isPending));
+    assert.equal(typeof fQuery.fn.isPending, 'function');
 });
 
 test('fQuery.fn.isPending() expectes no parameters', () => {

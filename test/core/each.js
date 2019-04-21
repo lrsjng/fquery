@@ -1,10 +1,9 @@
-const _ = require('lodash');
 const {test, assert} = require('scar');
 
 const fQuery = require('../../lib/fQuery');
 
 test('fQuery.fn.asyncEach() is function', () => {
-    assert.ok(_.isFunction(fQuery.fn.asyncEach));
+    assert.equal(typeof fQuery.fn.asyncEach, 'function');
 });
 
 test('fQuery.fn.asyncEach() expectes 1 parameter', () => {

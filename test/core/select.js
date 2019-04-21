@@ -1,4 +1,3 @@
-const _ = require('lodash');
 const path = require('path');
 const {test, assert} = require('scar');
 
@@ -10,7 +9,7 @@ const fQuery = require('../../lib/fQuery');
 
 
 test('fQuery.fn.select() is function', () => {
-    assert.ok(_.isFunction(fQuery.fn.select));
+    assert.equal(typeof fQuery.fn.select, 'function');
 });
 
 test('fQuery.fn.select() expectes 2 parameter', () => {
@@ -108,28 +107,28 @@ test('fQuery.fn.select() multi blob array select', () => {
 
 test('fQuery.fn.select() string select', () => {
     const x = fQuery().select('test/assets/files-abc/a');
-    const sources = _.map(x, 'source');
+    const sources = Array.from(x, xi => xi.source);
     const expected = [path.resolve('test/assets/files-abc/a')];
     assert.deepEqual(sources, expected);
 });
 
 test('fQuery.fn.select() string select glob', () => {
     const x = fQuery().select('test/assets/files-abc/*');
-    const sources = _.map(x, 'source');
+    const sources = Array.from(x, xi => xi.source);
     const expected = [path.resolve('test/assets/files-abc/a'), path.resolve('test/assets/files-abc/b'), path.resolve('test/assets/files-abc/c')];
     assert.deepEqual(sources, expected);
 });
 
 test('fQuery.fn.select() string select multi', () => {
     const x = fQuery().select('test/assets/files-abc/a, test/assets/files-abc/b');
-    const sources = _.map(x, 'source');
+    const sources = Array.from(x, xi => xi.source);
     const expected = [path.resolve('test/assets/files-abc/a'), path.resolve('test/assets/files-abc/b')];
     assert.deepEqual(sources, expected);
 });
 
 test('fQuery.fn.select() string select prefix', () => {
     const x = fQuery().select('test/assets/files-abc: a, b');
-    const sources = _.map(x, 'source');
+    const sources = Array.from(x, xi => xi.source);
     const expected = [path.resolve('test/assets/files-abc/a'), path.resolve('test/assets/files-abc/b')];
     assert.deepEqual(sources, expected);
 });
@@ -144,7 +143,7 @@ test('fQuery.fn.select() only one prefix pro group allowed', () => {
 
 test('fQuery.fn.select() string select groups', () => {
     const x = fQuery().select('test/assets/files-abc: a; test/assets: files-abc/b');
-    const sources = _.map(x, 'source');
+    const sources = Array.from(x, xi => xi.source);
     const expected = [path.resolve('test/assets/files-abc/a'), path.resolve('test/assets/files-abc/b')];
     assert.deepEqual(sources, expected);
 });
