@@ -1,8 +1,6 @@
 const {test, assert} = require('scar');
 
-const slice = obj => {
-    return Array.prototype.slice.call(obj); // eslint-disable-line
-};
+const to_arr = x => Array.from(x);
 
 const fQuery = require('../../lib/fQuery');
 
@@ -32,21 +30,21 @@ test('fQuery.fn.push() returns this, is chainable', () => {
 test('fQuery.fn.push() initial empty selection', () => {
     const x = fQuery();
     assert.deepEqual(x._stack, [[]]);
-    assert.deepEqual(slice(x), []);
+    assert.deepEqual(to_arr(x), []);
     assert.equal(x.length, 0);
 });
 
 test('fQuery.fn.push() empty push', () => {
     const x = fQuery().push();
     assert.deepEqual(x._stack, [[], []]);
-    assert.deepEqual(slice(x), []);
+    assert.deepEqual(to_arr(x), []);
     assert.equal(x.length, 0);
 });
 
 test('fQuery.fn.push() multi empty push', () => {
     const x = fQuery().push().push();
     assert.deepEqual(x._stack, [[], [], []]);
-    assert.deepEqual(slice(x), []);
+    assert.deepEqual(to_arr(x), []);
     assert.equal(x.length, 0);
 });
 
@@ -54,7 +52,7 @@ test('fQuery.fn.push() non blob value push', () => {
     const v = {};
     const x = fQuery().push(v);
     assert.deepEqual(x._stack, [[], []]);
-    assert.deepEqual(slice(x), []);
+    assert.deepEqual(to_arr(x), []);
     assert.equal(x.length, 0);
 });
 
@@ -62,7 +60,7 @@ test('fQuery.fn.push() non blobs array push', () => {
     const v = [{}, 1, true, null, undefined, 'text'];
     const x = fQuery().push(v);
     assert.deepEqual(x._stack, [[], []]);
-    assert.deepEqual(slice(x), []);
+    assert.deepEqual(to_arr(x), []);
     assert.equal(x.length, 0);
 });
 
@@ -70,7 +68,7 @@ test('fQuery.fn.push() blob value push', () => {
     const b = fQuery.Blob.fromPath('test/assets/files-abc/a');
     const x = fQuery().push(b);
     assert.deepEqual(x._stack, [[b], []]);
-    assert.deepEqual(slice(x), [b]);
+    assert.deepEqual(to_arr(x), [b]);
     assert.equal(x.length, 1);
 });
 
@@ -80,7 +78,7 @@ test('fQuery.fn.push() blob array push', () => {
     const b3 = fQuery.Blob.fromPath('test/assets/files-abc/c');
     const x = fQuery().push([b1, b2, b3]);
     assert.deepEqual(x._stack, [[b1, b2, b3], []]);
-    assert.deepEqual(slice(x), [b1, b2, b3]);
+    assert.deepEqual(to_arr(x), [b1, b2, b3]);
     assert.equal(x.length, 3);
 });
 
@@ -90,7 +88,7 @@ test('fQuery.fn.push() mixed array push', () => {
     const b3 = fQuery.Blob.fromPath('test/assets/files-abc/c');
     const x = fQuery().push([b1, 1, b2, true, b3, null]);
     assert.deepEqual(x._stack, [[b1, b2, b3], []]);
-    assert.deepEqual(slice(x), [b1, b2, b3]);
+    assert.deepEqual(to_arr(x), [b1, b2, b3]);
     assert.equal(x.length, 3);
 });
 
@@ -100,7 +98,7 @@ test('fQuery.fn.push() multi blob array push', () => {
     const b3 = fQuery.Blob.fromPath('test/assets/files-abc/c');
     const x = fQuery().push([b1, b2, b3]).push([b1]).push(b3);
     assert.deepEqual(x._stack, [[b3], [b1], [b1, b2, b3], []]);
-    assert.deepEqual(slice(x), [b3]);
+    assert.deepEqual(to_arr(x), [b3]);
     assert.equal(x.length, 1);
 });
 
@@ -130,21 +128,21 @@ test('fQuery.fn.pop() returns this, is chainable', () => {
 test('fQuery.fn.pop() pop', () => {
     const x = fQuery().pop();
     assert.deepEqual(x._stack, [[]]);
-    assert.deepEqual(slice(x), []);
+    assert.deepEqual(to_arr(x), []);
     assert.equal(x.length, 0);
 });
 
 test('fQuery.fn.pop() multi pop 1', () => {
     const x = fQuery().pop().pop();
     assert.deepEqual(x._stack, [[]]);
-    assert.deepEqual(slice(x), []);
+    assert.deepEqual(to_arr(x), []);
     assert.equal(x.length, 0);
 });
 
 test('fQuery.fn.pop() multi pop 2', () => {
     const x = fQuery().pop().pop().pop();
     assert.deepEqual(x._stack, [[]]);
-    assert.deepEqual(slice(x), []);
+    assert.deepEqual(to_arr(x), []);
     assert.equal(x.length, 0);
 });
 
@@ -156,22 +154,22 @@ test('fQuery.fn.pop() multi pop 3', () => {
 
     x.pop();
     assert.deepEqual(x._stack, [[b3, b1], [b1, b2, b3], []]);
-    assert.deepEqual(slice(x), [b3, b1]);
+    assert.deepEqual(to_arr(x), [b3, b1]);
     assert.equal(x.length, 2);
 
     x.pop();
     assert.deepEqual(x._stack, [[b1, b2, b3], []]);
-    assert.deepEqual(slice(x), [b1, b2, b3]);
+    assert.deepEqual(to_arr(x), [b1, b2, b3]);
     assert.equal(x.length, 3);
 
     x.pop();
     assert.deepEqual(x._stack, [[]]);
-    assert.deepEqual(slice(x), []);
+    assert.deepEqual(to_arr(x), []);
     assert.equal(x.length, 0);
 
     x.pop();
     assert.deepEqual(x._stack, [[]]);
-    assert.deepEqual(slice(x), []);
+    assert.deepEqual(to_arr(x), []);
     assert.equal(x.length, 0);
 });
 
@@ -250,7 +248,7 @@ test('fQuery.fn.each() iterates correctly 1', () => {
     const list = [];
 
     x.each(function fn1(blob, idx) {
-        list.push([this, blob, idx]); // eslint-disable-line
+        list.push([this, blob, idx]);
     });
 
     assert.deepEqual(list, []);
@@ -264,7 +262,7 @@ test('fQuery.fn.each() iterates correctly 2', () => {
     const list = [];
 
     x.each(function fn1(blob, idx) {
-        list.push([this, blob, idx]); // eslint-disable-line
+        list.push([this, blob, idx]);
     });
 
     const expected = [
@@ -284,7 +282,7 @@ test('fQuery.fn.each() iterates correctly 3', () => {
     const list = [];
 
     x.each(function fn1(blob, idx) {
-        list.push([this, blob, idx]); // eslint-disable-line
+        list.push([this, blob, idx]);
     });
 
     const expected = [
@@ -321,7 +319,7 @@ test('fQuery.fn.map() iterates correctly 1', () => {
     const list = [];
 
     const result = x.map(function fn1(blob, idx) {
-        list.push([this, blob, idx]); // eslint-disable-line
+        list.push([this, blob, idx]);
         return 'v' + idx;
     });
 
@@ -337,7 +335,7 @@ test('fQuery.fn.map() iterates correctly 2', () => {
     const list = [];
 
     const result = x.map(function fn1(blob, idx) {
-        list.push([this, blob, idx]); // eslint-disable-line
+        list.push([this, blob, idx]);
         return 'v' + idx;
     });
 
@@ -359,7 +357,7 @@ test('fQuery.fn.map() iterates correctly 3', () => {
     const list = [];
 
     const result = x.map(function fn1(blob, idx) {
-        list.push([this, blob, idx]); // eslint-disable-line
+        list.push([this, blob, idx]);
         return 'v' + idx;
     });
 

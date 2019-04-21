@@ -80,9 +80,9 @@ test('fQuery.fn.isPending() true inside then', () => {
 test('fQuery.fn.isPending() false after then is done', () => {
     return new Promise(resolve => {
         const x = fQuery().then(() => {
-            setTimeout(afterThen, 0); // eslint-disable-line
+            setTimeout(after_then, 0); // eslint-disable-line no-use-before-define
         });
-        const afterThen = () => {
+        const after_then = () => {
             assert.equal(x.isPending(), false);
             resolve();
         };
@@ -92,7 +92,7 @@ test('fQuery.fn.isPending() false after then is done', () => {
 test('fQuery.fn.isPending() correct in all phases', () => {
     return new Promise(resolve => {
         const x = fQuery();
-        const afterThen = () => {
+        const after_then = () => {
             assert.equal(x.isPending(), false);
             resolve();
         };
@@ -101,7 +101,7 @@ test('fQuery.fn.isPending() correct in all phases', () => {
 
         x.then(() => {
             assert.equal(x.isPending(), true);
-            setTimeout(afterThen, 0);
+            setTimeout(after_then, 0);
             assert.equal(x.isPending(), true);
         });
 

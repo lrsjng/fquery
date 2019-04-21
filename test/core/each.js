@@ -51,7 +51,7 @@ test('fQuery.fn.asyncEach() iterates correctly 2', () => {
         [b3, 2]
     ];
     const promise = x.asyncEach(function fn1(blob, idx) {
-        assert.equal(this, x); // eslint-disable-line
+        assert.equal(this, x);
         list.push([blob, idx]);
     });
 
@@ -77,7 +77,7 @@ test('fQuery.fn.asyncEach() iterates correctly 3', () => {
             [b3, 2]
         ];
         const promise = x.asyncEach(function fn1(blob, idx, d) {
-            assert.equal(this, x); // eslint-disable-line
+            assert.equal(this, x);
             setTimeout(() => {
                 list.push([blob, idx]);
                 d();
