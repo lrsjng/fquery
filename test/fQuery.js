@@ -7,6 +7,10 @@ test('fQuery is function', () => {
     assert.ok(_.isFunction(fQuery));
 });
 
+test('fQuery() instance of fQuery', () => {
+    assert.ok(fQuery() instanceof fQuery);
+});
+
 test('fQuery expectes 2 parameters', () => {
     assert.equal(fQuery.length, 2);
 });
