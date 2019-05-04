@@ -15,6 +15,7 @@
   "scripts": {
     "lint": "eslint .",
     "test": "node test",
+    "cover": "nyc --require @babel/register --reporter text --reporter html node test",
     "precommit": "npm run -s lint && npm run -s test"
   },
   "dependencies": {
@@ -24,7 +25,10 @@
     "rimraf": "2.6.3"
   },
   "devDependencies": {
+    "@babel/core": "7.4.4",
+    "@babel/register": "7.4.4",
     "eslint": "5.16.0",
+    "nyc": "14.1.0",
     "scar": "2.2.0"
   },
   "engines": {
