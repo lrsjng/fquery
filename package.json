@@ -1,7 +1,7 @@
 {
   "name": "fquery",
   "title": "fQuery",
-  "version": "0.17.0",
+  "version": "0.18.0",
   "description": "file selection and processing for Node.js",
   "homepage": "https://larsjung.de/fquery/",
   "bugs": "https://github.com/lrsjng/fQuery/issues",
@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "eslint": "5.16.0",
-    "scar": "1.6.0"
+    "scar": "2.2.0"
   },
   "engines": {
     "node": ">=10.0.0"

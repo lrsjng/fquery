@@ -30,13 +30,13 @@ test('fQuery.fn.asyncEach() iterates correctly 1', () => {
         list.push([blob, idx]);
     });
 
-    assert.deepEqual(list, []);
+    assert.deep_equal(list, []);
 
     promise.then(() => {
-        assert.deepEqual(list, []);
+        assert.deep_equal(list, []);
     });
 
-    assert.deepEqual(list, []);
+    assert.deep_equal(list, []);
 });
 
 test('fQuery.fn.asyncEach() iterates correctly 2', () => {
@@ -55,13 +55,13 @@ test('fQuery.fn.asyncEach() iterates correctly 2', () => {
         list.push([blob, idx]);
     });
 
-    assert.deepEqual(list, expected);
+    assert.deep_equal(list, expected);
 
     promise.then(() => {
-        assert.deepEqual(list, expected);
+        assert.deep_equal(list, expected);
     });
 
-    assert.deepEqual(list, expected);
+    assert.deep_equal(list, expected);
 });
 
 test('fQuery.fn.asyncEach() iterates correctly 3', () => {
@@ -84,13 +84,13 @@ test('fQuery.fn.asyncEach() iterates correctly 3', () => {
             }, 0);
         });
 
-        assert.deepEqual(list, []);
+        assert.deep_equal(list, []);
 
         promise.then(() => {
-            assert.deepEqual(list, expected);
+            assert.deep_equal(list, expected);
             resolve();
         });
 
-        assert.deepEqual(list, []);
+        assert.deep_equal(list, []);
     });
 });

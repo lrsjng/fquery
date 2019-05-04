@@ -28,22 +28,22 @@ test('fQuery.fn.then() then calls are in order', () => {
     fQuery()
         .then(() => {
             list.push(1);
-            assert.deepEqual(list, [0, 1]);
+            assert.deep_equal(list, [0, 1]);
         })
         .then(() => {
             list.push(2);
-            assert.deepEqual(list, [0, 1, 2]);
+            assert.deep_equal(list, [0, 1, 2]);
         })
         .then(() => {
             list.push(3);
-            assert.deepEqual(list, [0, 1, 2, 3]);
+            assert.deep_equal(list, [0, 1, 2, 3]);
         });
 
     setTimeout(() => {
-        assert.deepEqual(list, [0, 1, 2, 3]);
+        assert.deep_equal(list, [0, 1, 2, 3]);
     }, 0);
 
-    assert.deepEqual(list, [0]);
+    assert.deep_equal(list, [0]);
 });
 
 
