@@ -1,7 +1,7 @@
 # fQuery
 
 [![license][license-img]][github] [![web][web-img]][web] [![github][github-img]][github] [![npm][npm-img]][npm]  
-[![version][npm-v-img]][npm] [![downloads][npm-dm-img]][npm] [![build status][travis-img]][travis]
+[![version][npm-v-img]][npm] [![downloads][npm-dm-img]][npm]
 
 File selection and processing for Node.js.
 
@@ -9,7 +9,7 @@ File selection and processing for Node.js.
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2019 Lars Jung (https://larsjung.de)
+Copyright (c) 2020 Lars Jung (https://larsjung.de)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,6 @@ THE SOFTWARE.
 [web]: https://larsjung.de/fquery/
 [github]: https://github.com/lrsjng/fquery
 [npm]: https://www.npmjs.org/package/fquery
-[travis]: https://travis-ci.org/lrsjng/fquery
 
 [license-img]: https://img.shields.io/badge/license-MIT-a0a060.svg?style=flat-square
 [web-img]: https://img.shields.io/badge/web-larsjung.de/fquery-a0a060.svg?style=flat-square
@@ -42,4 +41,3 @@ THE SOFTWARE.
 
 [npm-v-img]: https://img.shields.io/npm/v/fquery.svg?style=flat-square
 [npm-dm-img]: https://img.shields.io/npm/dm/fquery.svg?style=flat-square
-[travis-img]: https://img.shields.io/travis/lrsjng/fquery.svg?style=flat-square

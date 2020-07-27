@@ -1,16 +1,12 @@
 {
   "name": "fquery",
   "title": "fQuery",
-  "version": "0.18.0",
+  "version": "1.0.0",
   "description": "file selection and processing for Node.js",
   "homepage": "https://larsjung.de/fquery/",
-  "bugs": "https://github.com/lrsjng/fQuery/issues",
   "author": "Lars Jung <lrsjng@gmail.com> (https://larsjung.de)",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lrsjng/fQuery.git"
-  },
+  "repository": "github:lrsjng/fquery",
   "main": "./lib/fQuery",
   "scripts": {
     "lint": "eslint .",
@@ -19,19 +15,16 @@
     "precommit": "npm run -s lint && npm run -s test"
   },
   "dependencies": {
-    "chalk": "2.4.2",
-    "escape-string-regexp": "2.0.0",
-    "glob": "7.1.3",
-    "rimraf": "2.6.3"
+    "chalk": "4.1.0",
+    "escape-string-regexp": "4.0.0",
+    "glob": "7.1.6",
+    "rimraf": "3.0.2"
   },
   "devDependencies": {
-    "@babel/core": "7.4.4",
-    "@babel/register": "7.4.4",
-    "eslint": "5.16.0",
-    "nyc": "14.1.0",
-    "scar": "2.2.0"
-  },
-  "engines": {
-    "node": ">=10.0.0"
+    "@babel/core": "7.10.5",
+    "@babel/register": "7.10.5",
+    "eslint": "7.5.0",
+    "nyc": "15.1.0",
+    "scar": "2.3.0"
   }
 }
