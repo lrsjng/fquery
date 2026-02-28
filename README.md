@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/lrsjng/fQuery.png)](http://travis-ci.org/lrsjng/fQuery)
 # fQuery
 
 [![license][license-img]][github] [![web][web-img]][web] [![github][github-img]][github] [![npm][npm-img]][npm]  
